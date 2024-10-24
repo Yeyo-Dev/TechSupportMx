@@ -5,9 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TechSupportMx</title>
     <link rel="stylesheet" href="style/main.css">
+   <!-- Include the Dark theme -->
+    <link rel="stylesheet" href="@sweetalert2/theme-dark/dark.css">
+    <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
+    
 </head>
 <body>
-    <iframe src="./frames/menu.html"  width="100%" height="100%"  frameborder="0"></iframe>
+    <header class="menu">
+        <div class="opc" onclick="window.top.location.href='./../index.html';" >Home</div>
+        <div class="opc" onclick="Swal.fire('Página aún no disponible, disculpe')//window.top.location.href='./../test.html';">New incidence</div>
+        <div class="opc" onclick="Swal.fire('Página aún no disponible, disculpe')//window.top.location.href='./../test.html';" >Check my incidences</div>
+        <div class="opc" onclick="Swal.fire('Página aún no disponible, disculpe')//window.top.location.href='./../test.html';" >About us</div>
+        <input type="text" id="">
+        <button>Buscar</button>
+        <div id="usuario"><img src="./../img/none.png" alt="User"></div>
+    </header>
+   
+    
     <iframe id="reloj-frame" title="Reloj" width="320" height="320"  src="./frames/reloj.html"  frameborder="0"></iframe>
 
     <footer>© 2024 TechSuport Mx</footer>

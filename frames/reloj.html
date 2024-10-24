@@ -24,116 +24,110 @@
     <div id="relojAnalogico" class="reloj"></div>
 </center>
 <script>
-        function relojAnalogico(divReloj)
-{  
-  function crearReloj(divReloj) {
+    function relojAnalogico(divReloj){  
 
-  /*CREAR ESFERA RELOJ Y APLICAR ESTILOS*/
-  let relojEsfera = document.createElement('div');
-  relojEsfera.id = 'relojEsfera';
-  relojEsfera.class= 'reloj relojEsfera';
-  divReloj.appendChild(relojEsfera);
-  relojEsfera.style.position = 'relative';
-  relojEsfera.style.top = '1%';
-  relojEsfera.style.width = '83%';
-  relojEsfera.style.height = '83%';
-  relojEsfera.style.border = '10px solid white';
-  relojEsfera.style.borderRadius = '50%';
-  relojEsfera.style.left = (divReloj.offsetWidth/2) -  (relojEsfera.offsetWidth/2) +'px';
-  
-  /*CREAR MANECILLA SEGUNDOS Y APLICAR ESTILOS*/
-  let segundos = document.createElement('div');
-  segundos.id = 'relojSegundos';
-  segundos.class = 'reloj manecillas segundos';
-  relojEsfera.appendChild(segundos);
-  segundos.style.border = '3px solid red';
-  segundos.style.position = 'absolute';
-  segundos.style.left = '50%';
-  segundos.style.bottom = '50%';
-  segundos.style.height = '45%';
-  segundos.style.width = '0';
-  segundos.style.transformOrigin = '50% 100%';
-  segundos.style.transition = 'transform 1s ease';
-  segundos.style.boxShadow = '2px 2px 10px rgb(38, 1, 8)';
-    
-  /*CREAR MANECILLA MINUTOS Y APLICAR ESTILOS*/
-  let minutos = document.createElement('div');
-  minutos.id = 'relojMinutos';
-  minutos.class = 'reloj manecillas minutos';
-  relojEsfera.appendChild(minutos);
-  minutos.style.border = '3px solid white';
-  minutos.style.position = 'absolute';
-  minutos.style.left = '50%';
-  minutos.style.bottom = '50%';
-  minutos.style.height = '35%';
-  minutos.style.width = '0';
-  minutos.style.transformOrigin = '50% 100%';
-  minutos.style.transition = 'transform 1s ease';
-  minutos.style.boxShadow = '2px 2px 10px rgb(38, 1, 8)';
-  
-  /*CREAR MANECILLA HORAS Y APLICAR ESTILOS*/
-  let horas = document.createElement('div');
-  horas.id = 'relojHoras';
-  horas.class = 'reloj manecillas horas';
-  relojEsfera.appendChild(horas);
-  horas.style.border = '3px solid white';
-  horas.style.position = 'absolute';
-  horas.style.left = '50%';
-  horas.style.bottom = '50%';
-  horas.style.height = '25%';
-  horas.style.width = '0';
-  horas.style.transformOrigin = '50% 100%';
-  horas.style.transition = 'transform 1s ease';
-  horas.style.boxShadow = '2px 2px 10px rgb(38, 1, 8)';  
+      function crearReloj(divReloj) {
+      /*CREAR ESFERA RELOJ Y APLICAR ESTILOS*/
+      let relojEsfera = document.createElement('div');
+      relojEsfera.id = 'relojEsfera';
+      relojEsfera.class= 'reloj relojEsfera';
+      divReloj.appendChild(relojEsfera);
+      relojEsfera.style.position = 'relative';
+      relojEsfera.style.top = '1%';
+      relojEsfera.style.width = '83%';
+      relojEsfera.style.height = '83%';
+      relojEsfera.style.border = '10px solid white';
+      relojEsfera.style.borderRadius = '50%';
+      relojEsfera.style.left = (divReloj.offsetWidth/2) -  (relojEsfera.offsetWidth/2) +'px';
+      
+      /*CREAR MANECILLA SEGUNDOS Y APLICAR ESTILOS*/
+      let segundos = document.createElement('div');
+      segundos.id = 'relojSegundos';
+      segundos.class = 'reloj manecillas segundos';
+      relojEsfera.appendChild(segundos);
+      segundos.style.border = '3px solid red';
+      segundos.style.position = 'absolute';
+      segundos.style.left = '50%';
+      segundos.style.bottom = '50%';
+      segundos.style.height = '45%';
+      segundos.style.width = '0';
+      segundos.style.transformOrigin = '50% 100%';
+      segundos.style.transition = 'transform 1s ease';
+      segundos.style.boxShadow = '2px 2px 10px rgb(38, 1, 8)';
+        
+      /*CREAR MANECILLA MINUTOS Y APLICAR ESTILOS*/
+      let minutos = document.createElement('div');
+      minutos.id = 'relojMinutos';
+      minutos.class = 'reloj manecillas minutos';
+      relojEsfera.appendChild(minutos);
+      minutos.style.border = '3px solid white';
+      minutos.style.position = 'absolute';
+      minutos.style.left = '50%';
+      minutos.style.bottom = '50%';
+      minutos.style.height = '35%';
+      minutos.style.width = '0';
+      minutos.style.transformOrigin = '50% 100%';
+      minutos.style.transition = 'transform 1s ease';
+      minutos.style.boxShadow = '2px 2px 10px rgb(38, 1, 8)';
+      
+      /*CREAR MANECILLA HORAS Y APLICAR ESTILOS*/
+      let horas = document.createElement('div');
+      horas.id = 'relojHoras';
+      horas.class = 'reloj manecillas horas';
+      relojEsfera.appendChild(horas);
+      horas.style.border = '3px solid white';
+      horas.style.position = 'absolute';
+      horas.style.left = '50%';
+      horas.style.bottom = '50%';
+      horas.style.height = '25%';
+      horas.style.width = '0';
+      horas.style.transformOrigin = '50% 100%';
+      horas.style.transition = 'transform 1s ease';
+      horas.style.boxShadow = '2px 2px 10px rgb(38, 1, 8)';  
 
-  }  
-  
-  function crearHoraReferencia() {
-    let tiempoI = new Date();
-    let tiempoS = tiempoI.getSeconds();
-    let tiempoM = tiempoI.getMinutes() * 60 + tiempoS;
-    let tiempoH = tiempoI.getHours() % 12 * 3600 + tiempoM;
-    
-    let horaRef = {horaRef : tiempoI, segundosRef : tiempoS, minutosRef : tiempoM, horasRef: tiempoH };
-    return horaRef;
-    
-  }
-  
-  function calcularHora() {
-    let tiempo = new Date();
-    return tiempo;
-  }
-  
-  function calcularRotacionManecillas(horaRef, horaActual) {    
-    let diferencia = Math.round(Math.abs(horaActual.getTime()-horaRef.horaRef.getTime()) / 1000);
-    let rotarSegundos = ((horaRef.segundosRef + diferencia) / 60 * 360);
-    let rotarMinutos = ((horaRef.minutosRef + diferencia) / 3600 * 360);
-    let rotarHoras = ((horaRef.horasRef + diferencia) / 43200 * 360);  
-    
-    rotarManecillas(rotarSegundos, rotarMinutos, rotarHoras)
-  }
-  
-  function rotarManecillas(rotSeg, rotMin, rotHor)
-  {
-      document.getElementById('relojSegundos').style.transform='rotate('+ rotSeg +'deg)';
-      document.getElementById('relojMinutos').style.transform='rotate('+ rotMin +'deg)';
-      document.getElementById('relojHoras').style.transform='rotate('+ rotHor +'deg)';
-  }
-  
-  
-  
-  function actualizarReloj (horaRef, horaActual)
-  {
-    calcularRotacionManecillas(horaRef, horaActual)
-  }
-  
-  crearReloj(divReloj);
-  let horaRef = crearHoraReferencia();
-  actualizarReloj(horaRef,calcularHora())
-  setInterval(function() {actualizarReloj(horaRef,calcularHora())},1);
-}
+      }  
+      
+      function crearHoraReferencia() {
+        let tiempoI = new Date();
+        let tiempoS = tiempoI.getSeconds();
+        let tiempoM = tiempoI.getMinutes() * 60 + tiempoS;
+        let tiempoH = tiempoI.getHours() % 12 * 3600 + tiempoM;
+        
+        let horaRef = {horaRef : tiempoI, segundosRef : tiempoS, minutosRef : tiempoM, horasRef: tiempoH };
+        return horaRef;
+        
+      }
+      
+      function calcularHora() {
+        let tiempo = new Date();
+        return tiempo;
+      }
+      
+      function calcularRotacionManecillas(horaRef, horaActual) {    
+        let diferencia = Math.round(Math.abs(horaActual.getTime()-horaRef.horaRef.getTime()) / 1000);
+        let rotarSegundos = ((horaRef.segundosRef + diferencia) / 60 * 360);
+        let rotarMinutos = ((horaRef.minutosRef + diferencia) / 3600 * 360);
+        let rotarHoras = ((horaRef.horasRef + diferencia) / 43200 * 360);  
+        rotarManecillas(rotarSegundos, rotarMinutos, rotarHoras)
+      }
+      
+      function rotarManecillas(rotSeg, rotMin, rotHor){
+          document.getElementById('relojSegundos').style.transform='rotate('+ rotSeg +'deg)';
+          document.getElementById('relojMinutos').style.transform='rotate('+ rotMin +'deg)';
+          document.getElementById('relojHoras').style.transform='rotate('+ rotHor +'deg)';
+      }
+            
+      function actualizarReloj (horaRef, horaActual){
+        calcularRotacionManecillas(horaRef, horaActual)
+      }
+      
+      crearReloj(divReloj);
+      let horaRef = crearHoraReferencia();
+      actualizarReloj(horaRef,calcularHora())
+      setInterval(function() {actualizarReloj(horaRef,calcularHora())},1);
+    }
 
-relojAnalogico(document.getElementById('relojAnalogico'));
+    relojAnalogico(document.getElementById('relojAnalogico'));
     </script>
 </body>
 </html>

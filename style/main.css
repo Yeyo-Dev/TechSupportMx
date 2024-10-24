@@ -2,6 +2,65 @@ body{
     background:url("../img/fondo.jpg");
 }
 
+header {
+    background-color: #000000;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin: 20px;
+    margin-top: -10px;
+    margin-left: -10px;
+    width: 98%;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-around;
+    
+}
+
+.opc {
+    background-color: #000000;
+    color: white;
+    padding: 20px;
+    width: 100px;
+    text-align: center;
+}
+
+.opc:hover{
+    background-color: #323232;
+}
+
+.menu input {
+    height: 50px;
+    width: 320px;
+    font-family:'Courier New', Courier, monospace;
+    background-color: aliceblue;
+    color: darkblue;
+    border-width: 0;
+}
+
+.menu button {
+    margin-left: -135px;
+    height:52px;
+    background-color: blue;
+    color: aqua;
+    border-width: 0;
+
+}
+
+#usuario{
+    border-radius: 50%;
+    background-color: azure;
+    width: 85px;
+    height: auto;
+}
+#usuario img {
+    border-radius: 50%;
+    max-width: 85px;
+    height: auto;
+}
+
 #reloj-frame {
     border-radius: 50%;
     margin-left: 40%;
