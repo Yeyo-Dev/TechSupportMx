@@ -1,52 +1,154 @@
+body {
+    margin: 0; /* Elimina márgenes del body */
+    overflow-x: hidden; /* Evita el desplazamiento horizontal */
+}
 
 
+.hero {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 120%;
+    height: 127%;
+    overflow: hidden;
+    z-index: -1; /* Asegú    background-position: center; /* Centra la imagen */
+background-position: center;
 
+}
+
+.hero img {
+    position: absolute; /* Asegura que la imagen se ajuste a la hero */
+    top: 50%;
+    left: 50%;
+    width: 150%; /* Aumenta el tamaño al 150% o más según necesites */
+    height: 150%; /* Igual que arriba */
+    transform: translate(-50%, -50%); /* Centra la imagen */
+    object-fit: cover; /* Mantiene la proporción */
+}
 
 nav {
- text-align: right;   
+    text-align: right;   
+    background-color: rgba(37, 179, 255, 0.8); /* Fondo semi-transparente */
     background-color: #25b3ff;
     color: white;
     padding: 10px;
-    position: relative;
     width: 100%;
-    top: 50%;
-    left: 50%; /* Cambiado de 50% a 0 para alinearlo a la izquierda */
-    transform: translate(-50%,-12%); /* Solo necesitamos moverlo verticalmente */
+    position: relative; /* Asegura que el nav esté sobre el fondo */
+    z-index: 1; /* Coloca el nav por encima del fondo */
 }
+
 nav a {
     color: white;
     padding: 14px 20px;
     text-decoration: none;
     display: inline-block;
-    font-size: 14px; /* Cambia el tamaño de la fuente aquí */
-
+    font-size: 14px;
 }
+
 nav a:hover {
     background-color: #555;
 }
 
-nav select{
+nav select {
     background: #333;
-    
     color: white;
     padding: 9px 20px;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 14px; /* Cambia el tamaño de la fuente aquí también si es necesario */
+    font-size: 14px;
+}
 
+.Imagen {
+    display: flex;
+    justify-content: left; /* Centra horizontalmente la imagen */
+    padding: 10px;
+}
+
+.Contenedor {
+    max-width: 970px; /* Limita el ancho máximo */
+    margin: 20px auto; /* Centra el contenedor y añade margen superior */
+    padding: 10px;
+    position: absolute;
+    left: 20%;
+    top: 50%;
+    transform: translateY(-110%);
+    background: #eeeeee8a;
+    border-radius: 30px}
+
+.Contenedor h2 {
+    text-align: center; /* Centra el título */
+}
+
+.Contenedor h1 {
+    text-align: center; /* Centra el título */
+}
+
+.Contenedor p {
+    font-size: 19px;
+    text-align: justify;
+}
+.Catalago h2{
+color: rgb(252, 251, 249);
+}
+.Catalago {
+    text-align: left; /* Centra el texto */
+    position: relative;
+    margin: 20px 0; /* Añade márgenes superior e inferior */
+    left: 5%    ;
+    width: 100px;
+    
+    
+
+}
+
+.Catalogo-seleccion {
+    display: flex;
+    justify-content: space-around; /* Distribuye el espacio entre los servicios */
+    flex-wrap: wrap; /* Permite que los elementos se muevan a la siguiente línea si no hay espacio */
+    padding: 10px 0; /* Espacio superior e inferior */
     
 }
+.Catalogo-seleccion a{
+    color:black;  /*Color de letra de los hipervinculos*/
+    text-decoration: none;/*Le quita el subrayado a los hipervinculos */
+
+}
+
+.Catalogo-Servicio1,
+.Catalogo-Servicio2,
+.Catalogo-Servicio3,
+.Catalogo-Servicio4 {
+    display: flex; /* Habilita flexbox en los servicios */
+    flex-direction: column; /* Coloca los elementos en columna */
+    background: #eeeeee8a;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 250px; /* Ancho fijo para cada servicio */
+    text-align: center;
+    border: 2px solid black;
+    margin: 10px; /* Espacio entre servicios */
+}
+.Catalogo-Servicio1 img,
+.Catalogo-Servicio2 img,
+.Catalogo-Servicio3 img,
+.Catalogo-Servicio4 img{
+    opacity: 0.9; /* Ajusta el valor entre 0 (completamente transparente) y 1 (completamente opaco) */
+
+    border-radius: 10px;
+}
+
 .search-container {
     display: flex;
     justify-content: center;
     margin-top: 20px;
 }
+
 .search-box {
     width: 400px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
+
 .search-button {
     padding: 10px 15px;
     margin-left: 5px;
@@ -56,7 +158,7 @@ nav select{
     border-radius: 5px;
     cursor: pointer;
 }
+
 .search-button:hover {
     background-color: #0056b3;
 }
-

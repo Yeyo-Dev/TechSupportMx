@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechSupportMX</title>
+    <link rel="stylesheet" href="./style/reporte_altas.css">
+</head>
+<body>
+    <div class="hero">
+        <img src="img\misurina-sunset.jpg" alt="Imagen de fondo">
+    </div>
+    
+    <nav>       
+        <input type="text" class="search-box" placeholder="Buscar..." />
+        <button class="search-button">Buscar</button>
+        <a href="./index.html">Inicio</a>
+        <a href="#contacto">Contacto</a>
+        <select name="pais" id="pais">
+            <option value="Matenimiento_preventivo">Mantenimiento preventivo</option>
+            <option value="Matenimiento_colombia">Mantenimiento correctivo</option>
+            <option value="Matenimiento_argentina">Mantenimiento evolutivo</option>
+            <option value="Matenimiento_seguridad">Mantenimiento seguridad</option>
+        </select>
+        <a href="Login.html">Username</a>  
+    </nav>
+    
+    <div class="Imagen">
+        <img src="img/LogoTechSupportMX.png" width="225" height="225" id="logo" alt="Logo TechSupportMX">
+    </div>
+    
+    <main>
+    <div>    
+    <div class="calendar"  id="incidencias_mes">
+        <h4>Incidencias del mes</h3>
+        <h3>Enero 2021</h4>
+        <ol>
+          <li class="day-name">Lun</li>
+          <li class="day-name">Mar</li>
+          <li class="day-name">Mié</li>
+          <li class="day-name">Jue</li>
+          <li class="day-name">Vie</li>
+          <li class="day-name">Sáb</li>
+          <li class="day-name">Dom</li>
+      
+          <li class="first-day">1</li>
+          <li>2</li>
+          <!-- ... -->
+          <li>31</li>
+        </ol>
+      </div>
+      
+      <div class="calendar"  id="manten_progr">
+        <h4>Mantenimientos programados</h4>
+        <h3>Enero 2021</h3>
+        <ol>
+          <li class="day-name">Lun</li>
+          <li class="day-name">Mar</li>
+          <li class="day-name">Mié</li>
+          <li class="day-name">Jue</li>
+          <li class="day-name">Vie</li>
+          <li class="day-name">Sáb</li>
+          <li class="day-name">Dom</li>
+      
+          <li class="first-day">1</li>
+          <li>2</li>
+          <!-- ... -->
+          <li>31</li>
+        </ol>
+      </div>
+    </div>
+      <div id="analisis">
+        <h1>Graficos</h1>
+        <div id="graficos"></div>
+        <button id="DesPDF">Descargar PDF</button><button id="DesXLS">Descargar Excel</button>
+      </div>
+    </main>  
+</body>
+</html>
