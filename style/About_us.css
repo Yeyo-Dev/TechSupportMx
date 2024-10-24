@@ -1,0 +1,62 @@
+
+
+
+
+nav {
+ text-align: right;   
+    background-color: #25b3ff;
+    color: white;
+    padding: 10px;
+    position: relative;
+    width: 100%;
+    top: 50%;
+    left: 50%; /* Cambiado de 50% a 0 para alinearlo a la izquierda */
+    transform: translate(-50%,-12%); /* Solo necesitamos moverlo verticalmente */
+}
+nav a {
+    color: white;
+    padding: 14px 20px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px; /* Cambia el tamaño de la fuente aquí */
+
+}
+nav a:hover {
+    background-color: #555;
+}
+
+nav select{
+    background: #333;
+    
+    color: white;
+    padding: 9px 20px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px; /* Cambia el tamaño de la fuente aquí también si es necesario */
+
+    
+}
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.search-box {
+    width: 400px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.search-button {
+    padding: 10px 15px;
+    margin-left: 5px;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.search-button:hover {
+    background-color: #0056b3;
+}
+
