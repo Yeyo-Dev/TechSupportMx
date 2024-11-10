@@ -1,0 +1,119 @@
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="estilopag.css">
+  <title>Formulario Registro</title>
+</head>
+<body>
+  <section class="form-register">
+    <h4>Registro de incidencias</h4>
+    <input class="controls" type="text" name="nombres" id="nombres" placeholder="Ingrese su Nombre">
+    <input class="controls" type="text" name="apellidos" id="apellidos" placeholder="Ingrese su Apellido">
+    <input class="controls" type="email" name="correo" id="correo" placeholder="Ingrese su Correo">
+    <input class="controls" type="password" name="correo" id="correo" placeholder="Ingrese su Contraseña">
+    <p>Estoy de acuerdo con <a href="#">Terminos y Condiciones</a></p>
+    <input class="botons" type="submit" value="Registrar">
+    <p><a href="#">¿Ya tengo Cuenta?</a></p>
+  </section>
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./style/estilopag.css">
+  <title>Registro de Incidencias</title>
+</head>
+<body>
+  <div class="hero">
+</div>
+
+<nav>       
+    <input type="text" class="search-box" placeholder="Buscar..." />
+    <button class="search-button">Buscar</button>
+    <a href="./index.html">Inicio</a>
+    <a href="./Contacto.html">Contacto</a>
+    <select name="pais" id="pais">
+        <option value="Matenimiento_preventivo">Mantenimiento preventivo</option>
+        <option value="Matenimiento_colombia">Mantenimiento correctivo</option>
+        <option value="Matenimiento_argentina">Mantenimiento evolutivo</option>
+        <option value="Matenimiento_seguridad">Mantenimiento seguridad</option>
+    </select>
+    <a href="Login.html">Username</a>  
+</nav>
+<div class="Imagen">
+  <img src="./img/LogoTechSupportMX.png" width="225" height="225" id="logo" alt="Logo TechSupportMX">
+</div>
+  <section class="form-register">
+    <h4>Registro de Incidencias</h4>
+
+    <!-- Fila 1: Usuario y Descripción -->
+    <div class="fila">
+      <div class="campo">
+        <label for="usuario">Usuario</label>
+        <input class="controls" type="text" name="usuario" id="usuario" value="Username" readonly>
+      </div>
+
+      <div class="campo">
+        <label for="descripcion">Descripción de incidencia</label>
+        <textarea class="controls" name="descripcion" id="descripcion" placeholder="Describa la incidencia aquí"></textarea>
+      </div>
+    </div>
+
+    <!-- Fila 2: Tipo de Incidencia, Fecha de Creación y Fecha de Cambio -->
+    <div class="fila">
+      <div class="campo">
+        <label for="tipoIncidencia">Tipo de incidencia</label>
+        <select class="controls" name="tipoIncidencia" id="tipoIncidencia">
+          <option value="" disabled selected>Seleccione el tipo</option>
+          <option value="conectividad">Problemas de conectividad</option>
+          <option value="incompatibilidad">Incompatibilidad</option>
+          <option value="software">Tipo de software</option>
+          <option value="discoDuro">Fallo de disco duro</option>
+        </select>
+      </div>
+
+      <div class="campo">
+        <label for="fechaCreacion">Fecha de creación</label>
+        <input class="controls" type="date" name="fechaCreacion" id="fechaCreacion">
+      </div>
+
+      <div class="campo">
+        <label for="fechaCambio">Fecha de cambio</label>
+        <input class="controls" type="date" name="fechaCambio" id="fechaCambio" readonly>
+      </div>
+    </div>
+
+    <!-- Fila 3: Técnico, Especialidad, ID Equipo y Estado -->
+    <div class="fila">
+      <div class="campo">
+        <label for="tecnico">Técnico</label>
+        <input class="controls" type="text" name="tecnico" id="tecnico" value="Nombre del Técnico" readonly>
+      </div>
+
+      <div class="campo">
+        <label for="especialidadTecnico">Especialidad Técnico</label>
+        <input class="controls" type="text" name="especialidadTecnico" id="especialidadTecnico" value="Especialidad" readonly>
+      </div>
+
+      <div class="campo">
+        <label for="idEquipo">ID equipo</label>
+        <input class="controls" type="text" name="idEquipo" id="idEquipo" value="ID del Equipo" readonly>
+      </div>
+
+      <div class="campo">
+        <label for="estadoActual">Estado Actual</label>
+        <input class="controls" type="text" name="estadoActual" id="estadoActual" value="Estado Actual" readonly>
+      </div>
+    </div>
+
+    <!-- Botón de Registrar Incidencia -->
+    <input class="botons" type="submit" value="Registrar Incidencia">
+  </section>
+</body>
+</html>
