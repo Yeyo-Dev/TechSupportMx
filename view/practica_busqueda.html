@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="">
+    <title>Busqueda</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+</head>
+<body>
+    <h1>Buscar empleado</h1>
+    <form id="busqueda">
+        <input type="search" name="busq" id="busq">
+    </form>
+    <br><br>
+    <button id="down" disabled>Descargar</button>
+    <br><br>
+    <a href="./Menu.html"><button>
+        🔙
+        Regresar
+    </button></a>
+    
+    <script>
+        document.getElementById("busq").addEventListener("keyup", (e) => {
+            e.preventDefault();
+            // Recoge los datos del formulario
+            const data = { b: document.getElementById('busq').value};
+            console.log(data);
+            if (document.getElementById('busq').value != ''){
+                fetch('http://localhost:3000/api/tabla_empleados', {
+                    method: 'POST',
+                    headers: {
+                    'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error en la solicitud');
+                }
+                return response.json();
+                })
+                .then(data => {
+                if (data[0]){
+                    generarPDF(data[0])
+                }
+                document.getElementById('down').disabled = true;
+                })
+                .catch(error => {
+                console.error('Error:', error);
+                });
+
+            }else{
+                document.getElementById('down').disabled = true;
+            }
+        });
+
+        /*{
+    "id_empleado": 1,
+    "nombre": "Luis Abraham",
+    "apellido_p": "Vargas",
+    "apellido_m": "Hernandez",
+    "id_departamento": 1
+}*/
+    async function generarPDF(data ) {
+
+    // Capturamos los datos del formulario
+    const id_empleado = data.id_empleado;
+    const nombre = data.nombre;
+    const apellido_p = data.apellido_p;
+    const apellido_m = data.apellido_m;
+   const id_departamento = data.id_departamento;
+
+    // Creamos un nuevo documento PDF
+    const pdfDoc = await PDFLib.PDFDocument.create();
+    const page = pdfDoc.addPage([500, 700]);
+
+    // Colores y fuentes
+    const blueColor = PDFLib.rgb(0, 0, 0);
+    const boldFont = await pdfDoc.embedFont(PDFLib.StandardFonts.HelveticaBold);
+
+    // Añadir barras de margen
+    page.drawRectangle({ x: 0, y: 650, width: 500, height: 1, color: blueColor });
+    
+    page.drawText('Datos del empleado', { x: 180, y: 670, size: 12, font: boldFont });
+    
+
+    let x = 40;
+    let y = 660;    
+
+    // Datos del alumno
+    y -= 40;
+    page.drawText(`ID: ${id_empleado}`, { x, y, size: 12 });
+    y -= 20;
+    page.drawText(`nombre: ${nombre} ${apellido_p} ${apellido_m}`, { x, y, size: 12 });
+    y -= 20;
+    page.drawText(`Id del departamento: ${id_departamento}`, { x, y, size: 12 });
+
+    // Convertimos el PDF en un Blob para la descarga
+    const pdfBytes = await pdfDoc.save();
+    const blob = new Blob([pdfBytes], { type: "application/pdf" });
+    const link = document.createElement("a");
+
+    // Definimos la descarga del PDF
+    link.href = URL.createObjectURL(blob);
+    link.download = `ReporteEmpleado_${id_empleado}.pdf`;
+    // Configurar el botón de descarga
+    document.getElementById('down').onclick = function() {
+        link.click(); // Simular el clic para iniciar la descarga
+    };
+    document.getElementById('down').disabled = false;
+}
+    </script>
+</body>
+</html>

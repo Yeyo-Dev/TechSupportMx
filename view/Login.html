@@ -3,35 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loggin</title>
+    <title>Login</title>
     <link rel="stylesheet" href="style/LoginCSS.css"> <!-- Ruta corregida -->
-
+    <script src="./js/sesion.js"></script>
 </head>
 <body>
     <div class="hero">
-        <img src="img\FondoLoggin.jpg" alt="Imagen de fondo">
+        <img src="img/FondoLoggin.jpg" alt="Imagen de fondo">
     </div>
 
     <div class="Formulario">
         <h1>TechSupportMX</h1>
-        <h3>Ingresa Sesion</h3>
+        <h3>Ingresa Sesión</h3>
         <div class="Registrarse">
-            <p>¿No tiene una cuenta? <b><a href="Registro.html">Click aqui</a></b></p>
+            <p>¿No tienes una cuenta? <b><a href="Registro.html">Haz clic aquí</a></b></p>
         </div>
-        <form method="post" action="./index.html">
+        <!-- Formulario de inicio de sesión -->
+        <form id="loginForm">
             <div class="Username">
-                <input type="text" required>
-                <label>Nombre de usuario</label>
+                <input type="text" id="nickname" required>
+                <label for="nickname">Nombre de usuario</label>
             </div>
             <div class="Username">
-                <input type="password" required>
-                <label>Contraseña</label>
+                <input type="password" id="password" required>
+                <label for="password">Contraseña</label>
             </div>
             <input type="submit" value="Iniciar">
             <div class="Registrarse">
-                No recuerdo la contraseña. <a href="">Recuperar ahora</a>
+                ¿No recuerdas tu contraseña? <a href="#">Recupérala aquí</a>
             </div>
         </form>
     </div>
+
+    <script>
+        // Capturar el formulario y manejar el evento de envío
+        document.getElementById('loginForm').addEventListener('submit', async (event) => {
+            event.preventDefault(); // Evita que el formulario recargue la página
+
+            // Obtener valores de los campos del formulario
+            const nickname = document.getElementById('nickname').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                // Enviar solicitud al backend con fetch
+                const response = await fetch('/api/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ nickname, password }) // Convertir datos a JSON
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    // Login exitoso, redirigir o mostrar mensaje
+                    alert('Inicio de sesión exitoso');
+                    window.location.href = '/index.html'; // Redirigir a la página principal
+                } else {
+                    // Mostrar mensaje de error
+                    alert(result.message || 'Error al iniciar sesión');
+                }
+            } catch (error) {
+                console.error('Error en la solicitud:', error);
+                alert('Ocurrió un error al intentar iniciar sesión. Inténtalo de nuevo.');
+            }
+        });
+    </script>
 </body>
 </html>

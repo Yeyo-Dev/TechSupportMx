@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consulta API</title>
+</head>
+<body>
+
+  <label for="apiSelect">Selecciona la consulta que deseas realizar:</label>
+  <select id="apiSelect">
+    <option value="">--Selecciona una opción--</option>
+    <option value="/api/empleados_departamentos">Listado de empleados y sus departamentos</option>
+    <option value="/api/tickets_por_usuario">Tickets abiertos por cada usuario</option>
+    <option value="/api/equipos_mantenimiento">Equipos que requieren mantenimiento</option>
+    <option value="/api/historial_estado_ticket">Historial de cambios de estado para un ticket específico</option>
+    <option value="/api/incidencias_por_tipo">Reporte de incidencias por tipo</option>
+    <option value="/api/mantenimientos_por_tecnico">Número de mantenimientos realizados por técnico</option>
+    <option value="/api/tickets_estados">Detalle de tickets y sus estados actuales</option>
+    <option value="/api/tecnicos_especialidad">Técnicos por especialidad</option>
+    <option value="/api/tickets_ultimo_mes">Tickets creados en el último mes</option>
+    <option value="/api/usuarios_tipos">Detalles de usuarios con sus tipos</option>
+  </select>
+
+  <button id="consultarBtn">Consultar</button>
+  <pre id="resultado"></pre>
+
+  <script>
+    document.getElementById('consultarBtn').addEventListener('click', async () => {
+      const apiPath = "http://localhost:3000" + document.getElementById('apiSelect').value;
+      if (apiPath) {
+        try {
+          const response = await fetch(apiPath);
+          const data = await response.json();
+          document.getElementById('resultado').textContent = JSON.stringify(data, null, 2);
+        } catch (error) {
+          document.getElementById('resultado').textContent = 'Error al consultar la API';
+        }
+      } else {
+        document.getElementById('resultado').textContent = 'Selecciona una opción para consultar';
+      }
+    });
+  </script>
+
+</body>
+</html>

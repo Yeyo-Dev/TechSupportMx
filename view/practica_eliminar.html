@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="">
+    <title>Busqueda</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+</head>
+<body>
+    <h1>Buscar empleado</h1>
+    <form id="busqueda">
+        <input type="search" name="busq" id="busq">
+    </form>
+    <br><br>
+    <button id="down" disabled>Eliminar</button>
+    <br><br>
+    <a href="./Menu.html"><button>
+        🔙
+        Regresar
+    </button></a>
+    
+    <script>
+        document.getElementById("busq").addEventListener("keyup", (e) => {
+            e.preventDefault();
+            // Recoge los datos del formulario
+            const data = { b: document.getElementById('busq').value};
+            console.log(data);
+            if (document.getElementById('busq').value != ''){
+                fetch('http://localhost:3000/api/tabla_empleados', {
+                    method: 'POST',
+                    headers: {
+                    'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error en la solicitud');
+                }
+                return response.json();
+                })
+                .then(data => {
+                if (data[0]){
+                    console.log(data[0]);
+                    document.getElementById('down').disabled = false;    
+                    //
+                    document.getElementById('down').onclick = function () {
+                        eliminar(data[0].id_empleado);  
+                    }
+                }else{
+                    document.getElementById('down').disabled = true;
+                }
+                })
+                .catch(error => {
+                console.error('Error:', error);
+                });
+
+            }else{
+                document.getElementById('down').disabled = true;
+            }
+        });
+
+        /*{
+    "id_empleado": 1,
+    "nombre": "Luis Abraham",
+    "apellido_p": "Vargas",
+    "apellido_m": "Hernandez",
+    "id_departamento": 1
+}*/
+    async function eliminar(id) {
+
+        const data = { b: id};
+        fetch('http://localhost:3000/api/eliminar_empleados', {
+                    method: 'POST',
+                    headers: {
+                    'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                })
+                .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error en la solicitud');
+                }
+                return response.json();
+                })
+                .then(data => {
+                    console.log(data);
+                    
+                })
+                .catch(error => {
+                console.error('Error:', error);
+                });
+    }
+    </script>
+</body>
+</html>

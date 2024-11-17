@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrador del sitio</title>
+    <style>
+        body{
+            background-color:beige;
+        }
+        header {
+            margin-left: -8px;
+            margin-top:-8px;
+            width: 100%;
+            background-color: black;
+            color: aliceblue;
+            font-size: larger;
+            padding: 1%;
+        }
+        #user{
+            margin-left: 90%;
+            font-size: 500%;
+            position: absolute;
+            margin-top: -120px;
+        }
+        /* Estilo para el contenedor */
+        #contenedor {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px;
+        }
+
+        #contenedor a{
+            text-decoration: none;
+        }
+        /* Estilo para las cajas dentro del contenedor */
+        .caja {
+            background-color: #7700EE;
+            color: white;
+            padding: 20px;
+            width: 100px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>ADMINISTRADOR DEL SITIO</h1>
+        <p id="user">🙂</p>
+    </header>
+    <br><br><br>
+    <div id="contenedor">
+        
+        <a href="./prueba_conexion.html"><div class="caja">
+            🙋
+            Registrar
+        </div></a>
+
+        <a href="./practica_eliminar.html"><div class="caja">
+            🙅
+            Eliminar
+        </div></a>
+
+        <a href="./practica_busqueda.html"><div class="caja">
+            🔍
+            Buscar
+        </div></a>
+        
+        <a href="./practica_actualizar.html"><div class="caja">
+            ✍️
+            Modificar
+        </div></a>
+
+        <a href="./consultas.html"><div class="caja">
+            📊
+            Consultas
+        </div></a>
+
+    </div>
+</body>
+</html>

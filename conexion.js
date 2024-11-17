@@ -1,13 +1,11 @@
-const { Pool } = require('pg');
+import pkg from 'pg';
+const { Pool } = pkg;
 
 // Configuración de la base de datos
-const pool = new Pool({
+export const pool = new Pool({
   user: 'postgres',
   host: 'localhost',
   database: 'TechSupportMx',
   password: 'Hola Mundo',
   port: 5432,
 });
-
-// Exportamos pool para usarlo en otras partes de la aplicación
-module.exports = pool;
