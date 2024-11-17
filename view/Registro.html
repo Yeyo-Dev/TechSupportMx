@@ -3,52 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Registro de Usuario</title>
     <link rel="stylesheet" href="./style/LoginCSS.css">
 </head>
 <body>
-
     <div class="hero">
         <img src="./img/FondoLoggin.jpg" alt="Imagen de fondo">
     </div>
     <div class="Formulario">
         <br><br>
-            <h1>TechSupportMX</h1>
-            <h3>Registrar cuenta</h3>
-          
-
-        <form metodo="post">
-
+        <h1>TechSupportMX</h1>
+        <h3>Registrar cuenta</h3>
+        <form id="registrationForm">
             <div class="Username">
-                <input type="text" required>
-                <label >Nombre</label>
+                <input type="text" name="nombre" required>
+                <label>Nombre</label>
             </div>
-
             <div class="Username">
-                <input type="text" required>
+                <input type="text" name="apellido_p" required>
+                <label>Apellido Paterno</label>
+            </div>
+            <div class="Username">
+                <input type="text" name="apellido_m" required>
+                <label>Apellido Materno</label>
+            </div>
+            <div class="Username">
+                <input type="email" name="email" required>
                 <label>Email</label>
             </div>
-
             <div class="Username">
-                <input type="text" required>
-                <label>Contraseña nuevamente</label>
+                <select name="id_departamento" required>
+                    <option value="" disabled selected>Selecciona el Departamento</option>
+                    <option value="1">Soporte Técnico</option>
+                    <option value="2">Desarrollo</option>
+                    <option value="3">Administración</option>
+                </select>
+                <label>Departamento</label>
             </div>
             <div class="Username">
-                <input type="text" required>
-                <label>Contraseña nuevamente</label>
-
+                <select name="id_tipo_usuario" required>
+                    <option value="" disabled selected>Selecciona el Tipo de Usuario</option>
+                    <option value="1">Administrador</option>
+                    <option value="2">Empleado</option>
+                </select>
+                <label>Tipo de Usuario</label>
             </div>
-            
+            <div class="Username">
+                <input type="text" name="nickname" required>
+                <label>Nombre de Usuario</label>
+            </div>
+            <div class="Username">
+                <input type="password" name="password" required>
+                <label>Contraseña</label>
+            </div>
             <input type="submit" value="Crear cuenta">
-            
-
         </form>
-        
-    
     </div>
 
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', async (e) => {
+            e.preventDefault(); // Evita el comportamiento predeterminado del formulario
 
+            // Obtén los datos del formulario
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData);
+            console.log(data);
+            
 
+            try {
+                // Envía los datos al backend usando fetch
+                const response = await fetch('http://localhost:3000/api/registrar', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
 
+                if (response.ok) {
+                    alert('Registro exitoso. Redirigiendo al inicio de sesión...');
+                    window.location.href = 'Login.html'; // Redirige al login
+                } else {
+                    const errorResponse = await response.json();
+                    alert(`Error al registrar: ${errorResponse.message || 'Inténtalo de nuevo.'}`);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Error al conectarse al servidor. Inténtalo más tarde.');
+            }
+        });
+    </script>
 </body>
 </html>

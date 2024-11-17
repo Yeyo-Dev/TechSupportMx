@@ -30,19 +30,20 @@ router.use(cookieParser());
 // Ruta para iniciar sesión
 router.post('/api/registrar', async (req, res) => {
   const { nombre, apellido_p, apellido_m, email, id_departamento, id_tipo_usuario, nickname, password } = req.body;
+  console.log(req.body);
+  
 
   try {
     // Consulta a la base de datos para verificar el usuario
     const resultado = await pool.query(
-      `CALL registrar_empleado_usuario('$1', '$2', '$3', '$4', $5, $6,'$7','$8');`,
-      [nombre, apellido_p, apellido_m, email, id_departamento, id_tipo_usuario, nickname, password]
+      `CALL registrar_empleado_usuario('${nombre}', '${apellido_p}', '${apellido_m}', '${email}', ${id_departamento}, ${id_tipo_usuario},'${nickname}','${password}');`
     );
 
     res.status(200).json({ message: 'Registro exitoso', detalles: resultado.rows });
     
   } catch (error) {
-    console.error('Error al iniciar sesión:', error);
-    res.status(500).send('Error al iniciar sesión');
+    console.error('Error al registrar usuario:', error);
+    res.status(500).send('Error al registrar usuario')
   }
 });
 
