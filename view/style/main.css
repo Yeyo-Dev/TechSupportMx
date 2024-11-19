@@ -1,78 +1,97 @@
-body{
-    background:url("../img/fondo.jpg");
+body {
+    margin: 0;
+    background-color: #e3f2fd; /* Fondo igual al de la primera página */
+    font-family: Arial, sans-serif; /* Tipografía simple y limpia */
 }
 
 header {
-    background-color: #000000;
+    background-color: #4a90e2; /* Azul suave para la barra superior */
     color: white;
-    text-align: center;
-    padding: 20px;
-    margin: 20px;
-    margin-top: -10px;
-    margin-left: -10px;
-    width: 98%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px; /* Barra más delgada */
+    margin: 0;
+    width: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
 }
 
 .menu {
     display: flex;
-    justify-content: space-around;
-    
+    align-items: center;
+    gap: 10px; /* Espacio entre elementos */
 }
 
 .opc {
-    background-color: #000000;
+    background-color: #4a90e2;
     color: white;
-    padding: 20px;
-    width: 100px;
+    padding: 10px; /* Reducción del tamaño */
+    width: auto;
     text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.opc:hover{
-    background-color: #323232;
+.opc:hover {
+    background-color: #357abd; /* Azul más oscuro al pasar el mouse */
 }
 
 .menu input {
-    height: 50px;
-    width: 320px;
-    font-family:'Courier New', Courier, monospace;
-    background-color: aliceblue;
-    color: darkblue;
-    border-width: 0;
+    height: 40px;
+    width: 300px;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: white;
+    color: #4a90e2; /* Texto azul */
+    border: 1px solid #4a90e2;
+    border-radius: 5px;
+    padding: 5px;
 }
 
 .menu button {
-    margin-left: -135px;
-    height:52px;
-    background-color: blue;
-    color: aqua;
-    border-width: 0;
-
+    height: 42px;
+    background-color: #357abd;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-#usuario{
+.menu button:hover {
+    background-color: #285687; /* Azul más oscuro al pasar el mouse */
+}
+
+#usuario {
     border-radius: 50%;
-    background-color: azure;
-    width: 85px;
-    height: auto;
+    background-color: white;
+    width: 50px; /* Tamaño reducido */
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
 #usuario img {
     border-radius: 50%;
-    max-width: 85px;
+    width: 100%;
     height: auto;
 }
 
 #reloj-frame {
-    border-radius: 50%;
-    margin-left: 40%;
+    border-radius: 0; /* Elimina el borde redondeado */
+    margin: 60px auto;
+    display: block;
+    box-shadow: none; /* Elimina la sombra */
+    border: none; /* Elimina cualquier borde que pueda estar presente */
 }
 
 footer {
-    background-color: #333;
+    background-color: #357abd; /* Azul que combina con la barra superior */
     color: white;
     text-align: center;
-    padding: 25px;
-    position: absolute;
+    padding: 15px;
+    position: fixed;
     bottom: 0;
-    width: 96.5%;
-    margin-left: -5px;
+    width: 100%;
 }

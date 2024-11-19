@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    background: linear-gradient(150deg, #31e1f8, #68d3fd);
+    background: #e3f2fd;
     height: 100vh;
     border-color: #6C3483;
     position: relative;
@@ -31,7 +31,9 @@ body {
     transform: translate(-50%, -50%);
     width: 400px;
     height: auto;
-    background: rgba(251, 251, 251, 0.254); /* Fondo blanco con 50% de opacidad */
+    background: rgba(255, 255, 255, 0.9); /* Fondo blanco con 50% de opacidad */
+    border: 1px solid #2196f3; /* Borde suave */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra suave */
     border-radius: 10px;
     border: 2px solid black;
     z-index: 1; /* Asegúrate de que esté encima de la imagen */
@@ -83,6 +85,15 @@ form .Username {
     pointer-events: none;
     transition: .5s;
 }
+.Username input:focus + label,
+.Username input:not(:placeholder-shown) + label,
+.Username select:focus + label,
+.Username select:not([value=""]) + label {
+    top: -15px;
+    font-size: 19px;
+    font-family: 'Times New Roman', Times, serif;
+    color: #000000;
+}
 
 input[type="submit"] {
     width: 100%;
@@ -109,7 +120,7 @@ input[type="submit"]:hover {
 }
 
 .Registrarse a {
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     text-decoration: none;
 }
 

@@ -1,29 +1,13 @@
 body {
     margin: 0; /* Elimina márgenes del body */
     overflow-x: hidden; /* Evita el desplazamiento horizontal */
+    background-color: #e3f2fd; /* Color de fondo del primer ejemplo */
+    font-family: Arial, sans-serif; /* Conserva la tipografía del ejemplo anterior */
 }
 
-
+/* Eliminamos el fondo de la clase hero */
 .hero {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 120%;
-    height: 127%;
-    overflow: hidden;
-    z-index: -1; /* Asegú    background-position: center; /* Centra la imagen */
-background-position: center;
-
-}
-
-.hero img {
-    position: absolute; /* Asegura que la imagen se ajuste a la hero */
-    top: 50%;
-    left: 50%;
-    width: 150%; /* Aumenta el tamaño al 150% o más según necesites */
-    height: 150%; /* Igual que arriba */
-    transform: translate(-50%, -50%); /* Centra la imagen */
-    object-fit: cover; /* Mantiene la proporción */
+    display: none; /* Oculta la hero completamente */
 }
 
 nav {
@@ -70,8 +54,9 @@ nav select {
     left: 20%;
     top: 50%;
     transform: translateY(-110%);
-    background: #eeeeee8a;
-    border-radius: 30px}
+    background: rgba(255, 255, 255, 0.8); /* Conservamos fondo semi-transparente */
+    border-radius: 30px;
+}
 
 .Contenedor h2 {
     text-align: center; /* Centra el título */
@@ -85,18 +70,17 @@ nav select {
     font-size: 19px;
     text-align: justify;
 }
-.Catalago h2{
-color: rgb(252, 251, 249);
+
+.Catalago h2 {
+    color: rgb(4, 4, 4);
 }
+
 .Catalago {
     text-align: left; /* Centra el texto */
     position: relative;
     margin: 20px 0; /* Añade márgenes superior e inferior */
-    left: 5%    ;
+    left: 5%;
     width: 100px;
-    
-    
-
 }
 
 .Catalogo-seleccion {
@@ -104,12 +88,11 @@ color: rgb(252, 251, 249);
     justify-content: space-around; /* Distribuye el espacio entre los servicios */
     flex-wrap: wrap; /* Permite que los elementos se muevan a la siguiente línea si no hay espacio */
     padding: 10px 0; /* Espacio superior e inferior */
-    
 }
-.Catalogo-seleccion a{
-    color:black;  /*Color de letra de los hipervinculos*/
-    text-decoration: none;/*Le quita el subrayado a los hipervinculos */
 
+.Catalogo-seleccion a {
+    color: black; /* Color de letra de los hipervínculos */
+    text-decoration: none; /* Le quita el subrayado a los hipervínculos */
 }
 
 .Catalogo-Servicio1,
@@ -118,7 +101,7 @@ color: rgb(252, 251, 249);
 .Catalogo-Servicio4 {
     display: flex; /* Habilita flexbox en los servicios */
     flex-direction: column; /* Coloca los elementos en columna */
-    background: #eeeeee8a;
+    background: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente */
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -127,12 +110,12 @@ color: rgb(252, 251, 249);
     border: 2px solid black;
     margin: 10px; /* Espacio entre servicios */
 }
+
 .Catalogo-Servicio1 img,
 .Catalogo-Servicio2 img,
 .Catalogo-Servicio3 img,
-.Catalogo-Servicio4 img{
+.Catalogo-Servicio4 img {
     opacity: 0.9; /* Ajusta el valor entre 0 (completamente transparente) y 1 (completamente opaco) */
-
     border-radius: 10px;
 }
 

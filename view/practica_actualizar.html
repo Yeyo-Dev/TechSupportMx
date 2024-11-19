@@ -1,122 +1,192 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Busqueda</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
     <style>
-        h1{
+        body {
+            background-color: #e3f2fd;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
             text-align: center;
+            color: #4a90e2;
+            font-size: 2.5rem;
+            margin-top: 20px;
         }
 
-        #busqueda{
-            border-style: solid;
+        #busqueda {
+            border-radius: 10px;
             width: 50%;
-            margin-left: 25%;
+            margin: 0 auto;
+            background-color: #d0e9f7; /* Azul suave */
+            padding: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+            border: 2px solid #000; /* Borde negro */
+            margin-top: 30px;
         }
 
-        #busqueda input {
-            border-width: 0px;
-            border-bottom-width: 1px;
-            border-bottom-style: solid;
-            padding-left: 1%;
-            padding-right: 1%;
-            margin-top: 1%;
-            margin-bottom: 1%;
-        }
         label {
-            font-size: small;
-            color: #555555;
-            margin-left: 22%;
-            margin-top: 10px;
-            margin-bottom: 10px; 
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 8px;
+            display: block;
         }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            font-size: 1rem;
+            box-sizing: border-box;
+            background-color: #f9f9f9;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #4a90e2;
+            background-color: #fff;
+        }
+
         button {
-            border-radius: 12px;
-            padding: 1%;
-            margin-left: 44%;
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 10px 0;
         }
-        .fuera {
-            width: 45%;
-            border-color: #555555;
+
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
         }
-        hr{
-            border-color: #555555;
+
+        button:hover:not(:disabled) {
+            background-color: #357ab7;
         }
-        
+
+        hr.fuera {
+            border: none;
+            border-top: 2px solid #ddd;
+            margin: 20px 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* Diseño del botón de regresar */
+        .regresar-btn {
+            background-color: #efefef;
+            color: #333;
+            font-size: 1.1rem;
+            padding: 12px 20px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            display: inline-block;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        .regresar-btn:hover {
+            background-color: #ddd;
+        }
+
+        /* Contenedor para los botones */
+        .botones-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px; /* Espacio entre los botones */
+        }
     </style>
 </head>
 <body>
     <h1>Modificar empleado</h1>
-    <hr class="fuera"><br>
+    <hr class="fuera">
     <form id="busqueda">
-        <label for="busq">ID_empleado: </label>
-        <input type="search" name="busq" id="busq"><br>
-        <br><hr><br>
-        <label for="nombre">Nombre: </label>
-        <input type="text" name="nombre" id="nombre"><br><br>
-        <label for="apellido_p">Apellido paterno: </label>
-        <input type="text" name="apellido_p" id="apellido_p"><br><br>
-        <label for="apellido_m">Apellido materno: </label>
-        <input type="text" name="apellido_m" id="apellido_m"><br><br>
-        <label for="id_departamento">Id departamento: </label>
-        <input type="text" name="id_departamento" id="id_departamento">
+        <label for="busq">ID_empleado:</label>
+        <input type="search" name="busq" id="busq" placeholder="Introduce el ID del empleado"><br>
+
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre" id="nombre" placeholder="Nombre del empleado"><br>
+
+        <label for="apellido_p">Apellido paterno:</label>
+        <input type="text" name="apellido_p" id="apellido_p" placeholder="Apellido paterno"><br>
+
+        <label for="apellido_m">Apellido materno:</label>
+        <input type="text" name="apellido_m" id="apellido_m" placeholder="Apellido materno"><br>
+
+        <label for="id_departamento">ID departamento:</label>
+        <input type="text" name="id_departamento" id="id_departamento" placeholder="ID del departamento">
     </form>
-    <br><br>
-    <button id="down" disabled>Modificar</button>
-    <br><br>
-    <a href="./Menu.html"><button>
-        🔙
-        Regresar
-    </button></a>
+
+    <div class="botones-container">
+        <button id="down" disabled>Modificar</button>
+        <a href="./Menu.html">
+            <button class="regresar-btn">
+                🔙 Regresar
+            </button>
+        </a>
+    </div>
+
     <script>
         document.getElementById("busq").addEventListener("keyup", (e) => {
             e.preventDefault();
             // Recoge los datos del formulario
             const data = { b: document.getElementById('busq').value};
             console.log(data);
-            if (document.getElementById('busq').value != ''){
+            if (document.getElementById('busq').value != '') {
                 fetch('http://localhost:3000/api/tabla_empleados', {
                     method: 'POST',
                     headers: {
-                    'Content-Type': 'application/json'
+                        'Content-Type': 'application/json'
                     },
                     body: JSON.stringify(data)
                 })
                 .then(response => {
-                if (!response.ok) {
-                    throw new Error('Error en la solicitud');
-                }
-                return response.json();
+                    if (!response.ok) {
+                        throw new Error('Error en la solicitud');
+                    }
+                    return response.json();
                 })
                 .then(data => {
-                if (data[0]){
-                    console.log(data[0]);
-                    document.getElementById('down').disabled = false;
-                    document.getElementById('down').style = "color: #000077";    
-                    //
-                    document.getElementById('nombre').value = data[0].nombre;
-                    document.getElementById('apellido_p').value = data[0].apellido_p;
-                    document.getElementById('apellido_m').value = data[0].apellido_m;
-                    document.getElementById('id_departamento').value = data[0].id_departamento;
-                    document.getElementById('down').onclick = function () {
-                        actualizar();  
+                    if (data[0]) {
+                        console.log(data[0]);
+                        document.getElementById('down').disabled = false;
+                        document.getElementById('down').style = "color: #000077";    
+                        //
+                        document.getElementById('nombre').value = data[0].nombre;
+                        document.getElementById('apellido_p').value = data[0].apellido_p;
+                        document.getElementById('apellido_m').value = data[0].apellido_m;
+                        document.getElementById('id_departamento').value = data[0].id_departamento;
+                        document.getElementById('down').onclick = function () {
+                            actualizar();  
+                        }
+                    } else {
+                        document.getElementById('nombre').value = "";
+                        document.getElementById('apellido_p').value = "";
+                        document.getElementById('apellido_m').value = "";
+                        document.getElementById('id_departamento').value = "";
+                        document.getElementById('down').disabled = true;
+                        document.getElementById('down').style = "color: #777777";
                     }
-                }else{
-                    document.getElementById('nombre').value = "";
-                    document.getElementById('apellido_p').value = "";
-                    document.getElementById('apellido_m').value = "";
-                    document.getElementById('id_departamento').value = "";
-                    document.getElementById('down').disabled = true;
-                    document.getElementById('down').style = "color: #777777";
-                }
                 })
                 .catch(error => {
-                console.error('Error:', error);
+                    console.error('Error:', error);
                 });
 
-            }else{
+            } else {
                 document.getElementById('nombre').value = "";
                 document.getElementById('apellido_p').value = "";
                 document.getElementById('apellido_m').value = "";
@@ -126,43 +196,35 @@
             }
         });
 
-        /*{
-    "id_empleado": 1,
-    "nombre": "Luis Abraham",
-    "apellido_p": "Vargas",
-    "apellido_m": "Hernandez",
-    "id_departamento": 1
-}*/
-    async function actualizar() {
+        async function actualizar() {
+            const data = {
+                id_empleado: document.getElementById('busq').value, 
+                nombre: document.getElementById('nombre').value,
+                apellido_p: document.getElementById('apellido_p').value,
+                apellido_m: document.getElementById('apellido_m').value,
+                id_departamento: document.getElementById('id_departamento').value
+            };
 
-        const data = {
-            id_empleado: document.getElementById('busq').value, 
-            nombre: document.getElementById('nombre').value,
-            apellido_p: document.getElementById('apellido_p').value,
-            apellido_m: document.getElementById('apellido_m').value,
-            id_departamento: document.getElementById('id_departamento').value
-        };
-        fetch('http://localhost:3000/api/actualiza_empleados', {
-                    method: 'POST',
-                    headers: {
+            fetch('http://localhost:3000/api/actualiza_empleados', {
+                method: 'POST',
+                headers: {
                     'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(data)
-                })
-                .then(response => {
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
                 if (!response.ok) {
                     throw new Error('Error en la solicitud');
                 }
                 return response.json();
-                })
-                .then(data => {
-                    console.log(data);
-                    
-                })
-                .catch(error => {
+            })
+            .then(data => {
+                console.log(data);
+            })
+            .catch(error => {
                 console.error('Error:', error);
-                });
-    }
+            });
+        }
     </script>
 </body>
 </html>

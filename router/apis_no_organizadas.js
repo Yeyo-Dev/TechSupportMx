@@ -246,4 +246,61 @@ router.get('/api/tabla_usuarios', async (req, res) => {
     }
   });
 
+// POST route to get the maintenance report details
+router.get('/api/reporte_mantenimiento/:id_equipo', async (req, res) => {
+  const { id_equipo } = req.params; // Assuming the client sends the equipment ID to retrieve data
+  console.log(id_equipo);
+  try {
+    // SQL query to retrieve the report data
+    const query = `
+      SELECT 
+        E.nombre AS usuario_nombre,
+        E.apellido_p AS usuario_apellido_paterno,
+        E.apellido_m AS usuario_apellido_materno,
+        D.nombre_departamento,
+        EQ.id_equipo,
+        EQ.caracteristica,
+        M.fecha_mantenimiento,
+        M.descripcion AS reporte_descripcion,
+        TE.id_tecnico,
+        TE.especialidad,
+        ET.nombre AS tecnico_nombre,
+        ET.apellido_p AS tecnico_apellido_paterno,
+        ET.apellido_m AS tecnico_apellido_materno
+      FROM 
+        Empleado E
+      JOIN 
+        Departamento D ON E.id_departamento = D.id_departamento
+      JOIN 
+        Equipo EQ ON EQ.id_departamento = E.id_departamento
+      JOIN 
+        Mantenimiento M ON M.id_equipo = EQ.id_equipo
+      JOIN 
+        Tecnico TE ON M.id_tecnico = TE.id_tecnico
+      JOIN 
+        Empleado ET ON TE.id_empleado = ET.id_empleado
+      WHERE 
+        EQ.id_equipo = ${id_equipo}
+      ORDER BY 
+        M.fecha_mantenimiento DESC
+      LIMIT 1; -- Get the most recent maintenance
+    `;
+
+    // Execute the query
+    const resultado = await pool.query(query);
+
+    // If no data is found
+    if (resultado.rows.length === 0) {
+      return res.status(404).json({ message: 'No data found for the given equipment ID' });
+    }
+
+    // Return the result
+    res.json(resultado.rows[0]);
+
+  } catch (error) {
+    console.error('Error retrieving maintenance report data:', error);
+    res.status(500).send('Error retrieving maintenance report data');
+  }
+});
+
 export default router;

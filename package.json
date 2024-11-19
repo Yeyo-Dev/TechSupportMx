@@ -4,7 +4,7 @@
     "express": "^4.21.1",
     "pg": "^8.13.1"
   },
-  "name": "bd",
+  "name": "tech_support",
   "version": "1.0.0",
   "main": "index.js",
   "type": "module",
@@ -16,5 +16,6 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "devDependencies": {},
   "description": ""
 }

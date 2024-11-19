@@ -2,95 +2,184 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Busqueda</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+    <style>
+        body {
+            background-color: #e3f2fd;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #4a90e2;
+            font-size: 2.5rem;
+            margin-top: 20px;
+        }
+
+        #busqueda {
+            border-radius: 10px;
+            width: 50%;
+            margin: 0 auto;
+            background-color: #d0e9f7;
+            padding: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            border: 2px solid #000;
+            margin-top: 30px;
+        }
+
+        label {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            font-size: 1rem;
+            box-sizing: border-box;
+            background-color: #f9f9f9;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #4a90e2;
+            background-color: #fff;
+        }
+
+        button {
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 10px 0;
+        }
+
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        button:hover:not(:disabled) {
+            background-color: #357ab7;
+        }
+
+        /* Contenedor para los botones */
+        .botones-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        /* Estilo para los botones */
+        .botones-container button {
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            border: 1px solid #ddd;
+            background-color: #efefef;
+            color: #333;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .botones-container button:hover {
+            background-color: #ddd;
+        }
+
+        .botones-container button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+    </style>
 </head>
 <body>
     <h1>Buscar empleado</h1>
     <form id="busqueda">
-        <input type="search" name="busq" id="busq">
+        <input type="search" name="busq" id="busq" placeholder="Introduce el ID del empleado">
     </form>
-    <br><br>
-    <button id="down" disabled>Eliminar</button>
-    <br><br>
-    <a href="./Menu.html"><button>
-        🔙
-        Regresar
-    </button></a>
     
+    <!-- Contenedor de botones -->
+    <div class="botones-container">
+        <button id="down" disabled>Eliminar</button>
+        <a href="./Menu.html"><button>🔙 Regresar</button></a>
+    </div>
+
     <script>
         document.getElementById("busq").addEventListener("keyup", (e) => {
             e.preventDefault();
             // Recoge los datos del formulario
-            const data = { b: document.getElementById('busq').value};
+            const data = { b: document.getElementById('busq').value };
             console.log(data);
-            if (document.getElementById('busq').value != ''){
+            if (document.getElementById('busq').value != '') {
                 fetch('http://localhost:3000/api/tabla_empleados', {
                     method: 'POST',
                     headers: {
-                    'Content-Type': 'application/json'
+                        'Content-Type': 'application/json'
                     },
                     body: JSON.stringify(data)
                 })
                 .then(response => {
-                if (!response.ok) {
-                    throw new Error('Error en la solicitud');
-                }
-                return response.json();
+                    if (!response.ok) {
+                        throw new Error('Error en la solicitud');
+                    }
+                    return response.json();
                 })
                 .then(data => {
-                if (data[0]){
-                    console.log(data[0]);
-                    document.getElementById('down').disabled = false;    
-                    //
-                    document.getElementById('down').onclick = function () {
-                        eliminar(data[0].id_empleado);  
+                    if (data[0]) {
+                        console.log(data[0]);
+                        document.getElementById('down').disabled = false;
+                        document.getElementById('down').onclick = function () {
+                            eliminar(data[0].id_empleado);
+                        };
+                    } else {
+                        document.getElementById('down').disabled = true;
                     }
-                }else{
-                    document.getElementById('down').disabled = true;
-                }
                 })
                 .catch(error => {
-                console.error('Error:', error);
+                    console.error('Error:', error);
                 });
-
-            }else{
+            } else {
                 document.getElementById('down').disabled = true;
             }
         });
 
-        /*{
-    "id_empleado": 1,
-    "nombre": "Luis Abraham",
-    "apellido_p": "Vargas",
-    "apellido_m": "Hernandez",
-    "id_departamento": 1
-}*/
-    async function eliminar(id) {
-
-        const data = { b: id};
-        fetch('http://localhost:3000/api/eliminar_empleados', {
-                    method: 'POST',
-                    headers: {
+        async function eliminar(id) {
+            const data = { b: id };
+            fetch('http://localhost:3000/api/eliminar_empleados', {
+                method: 'POST',
+                headers: {
                     'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(data)
-                })
-                .then(response => {
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
                 if (!response.ok) {
                     throw new Error('Error en la solicitud');
                 }
                 return response.json();
-                })
-                .then(data => {
-                    console.log(data);
-                    
-                })
-                .catch(error => {
+            })
+            .then(data => {
+                console.log(data);
+            })
+            .catch(error => {
                 console.error('Error:', error);
-                });
-    }
+            });
+        }
     </script>
 </body>
 </html>

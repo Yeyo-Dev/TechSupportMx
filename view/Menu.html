@@ -1,81 +1,123 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Administrador del sitio</title>
     <style>
-        body{
-            background-color:beige;
+        body {
+            background-color: #e3f2fd;
+            font-family: Arial, sans-serif;
         }
+        
         header {
-            margin-left: -8px;
-            margin-top:-8px;
             width: 100%;
-            background-color: black;
-            color: aliceblue;
-            font-size: larger;
-            padding: 1%;
+            background-color: #25b3ff; /* Fondo azul claro */
+            color: white;
+            font-size: 24px;
+            padding: 10px;
+            text-align: center;
+            position: relative;
         }
-        #user{
-            margin-left: 90%;
-            font-size: 500%;
+        
+        #user {
+            font-size: 50px;
             position: absolute;
-            margin-top: -120px;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
         }
+
+        /* Estilo para el logo */
+        #logo {
+            position: absolute;
+            right: 20px; /* Alineación del logo a la derecha */
+            top: 50%;
+            transform: translateY(-50%);
+            width: 150px;
+            height: auto;
+        }
+
         /* Estilo para el contenedor */
         #contenedor {
             display: flex;
             justify-content: space-around;
+            flex-wrap: wrap;
             margin: 20px;
+            justify-content: center;
         }
 
-        #contenedor a{
+        #contenedor a {
             text-decoration: none;
         }
+
         /* Estilo para las cajas dentro del contenedor */
         .caja {
-            background-color: #7700EE;
+            background-color: #7700EE; /* Color morado */
             color: white;
             padding: 20px;
-            width: 100px;
+            margin: 10px;
+            width: 150px;
             text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        /* Efecto hover */
+        .caja:hover {
+            transform: translateY(-5px);
+            background-color: #ff4081; /* Cambio de color al pasar el mouse */
+        }
+
+        /* Icono de cada caja */
+        .caja span {
+            font-size: 30px;
+            display: block;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>ADMINISTRADOR DEL SITIO</h1>
-        <p id="user">🙂</p>
+        <h1>Administrador del Sitio</h1>
+        <img src="./img/LogoTechSupportMX.png" id="logo" alt="Logo TechSupportMX">
     </header>
-    <br><br><br>
+
     <div id="contenedor">
-        
-        <a href="./prueba_conexion.html"><div class="caja">
-            🙋
-            Registrar
-        </div></a>
+        <a href="./prueba_conexion.html">
+            <div class="caja">
+                <span>🙋</span>
+                Registrar
+            </div>
+        </a>
 
-        <a href="./practica_eliminar.html"><div class="caja">
-            🙅
-            Eliminar
-        </div></a>
+        <a href="./practica_eliminar.html">
+            <div class="caja">
+                <span>🙅</span>
+                Eliminar
+            </div>
+        </a>
 
-        <a href="./practica_busqueda.html"><div class="caja">
-            🔍
-            Buscar
-        </div></a>
-        
-        <a href="./practica_actualizar.html"><div class="caja">
-            ✍️
-            Modificar
-        </div></a>
+        <a href="./practica_busqueda.html">
+            <div class="caja">
+                <span>🔍</span>
+                Buscar
+            </div>
+        </a>
 
-        <a href="./consultas.html"><div class="caja">
-            📊
-            Consultas
-        </div></a>
+        <a href="./practica_actualizar.html">
+            <div class="caja">
+                <span>✍️</span>
+                Modificar
+            </div>
+        </a>
 
+        <a href="./consultas.html">
+            <div class="caja">
+                <span>📊</span>
+                Consultas
+            </div>
+        </a>
     </div>
 </body>
 </html>

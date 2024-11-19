@@ -1,8 +1,11 @@
+/* General */
 body {
-    margin: 0; /* Elimina márgenes del body */
-    overflow-x: hidden; /* Evita el desplazamiento horizontal */
+    margin: 0;
+    overflow-x: hidden;
+    background-color: #e3f2fd;
+    font-family: Arial, sans-serif;
+    background-size: cover;
 }
-
 
 .hero {
     position: absolute;
@@ -10,31 +13,28 @@ body {
     left: 0;
     width: 120%;
     height: 127%;
-    overflow: hidden;
-    z-index: -1; /* Asegú    background-position: center; /* Centra la imagen */
-background-position: center;
-
+    z-index: -1;
 }
 
 .hero img {
-    position: absolute; /* Asegura que la imagen se ajuste a la hero */
+    position: absolute;
     top: 50%;
     left: 50%;
-    width: 150%; /* Aumenta el tamaño al 150% o más según necesites */
-    height: 150%; /* Igual que arriba */
-    transform: translate(-50%, -50%); /* Centra la imagen */
-    object-fit: cover; /* Mantiene la proporción */
+    width: 150%;
+    height: 150%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
 }
 
+/* Navegación */
 nav {
     text-align: right;   
-    background-color: rgba(37, 179, 255, 0.8); /* Fondo semi-transparente */
-    background-color: #25b3ff;
+    background-color: rgba(37, 179, 255, 0.8);
     color: white;
     padding: 10px;
     width: 100%;
-    position: relative; /* Asegura que el nav esté sobre el fondo */
-    z-index: 1; /* Coloca el nav por encima del fondo */
+    position: relative;
+    z-index: 1;
 }
 
 nav a {
@@ -56,48 +56,20 @@ nav select {
     font-size: 14px;
 }
 
+/* Imagen de logo */
 .Imagen {
     display: flex;
-    justify-content: left; /* Centra horizontalmente la imagen */
+    justify-content: left;
     padding: 5px;
     position: absolute;
-   
-
 }
 
-#logo{
+#logo {
     width: 25%;
     height: auto;
 }
 
-
-.search-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.search-box {
-    width: 400px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.search-button {
-    padding: 10px 15px;
-    margin-left: 5px;
-    border: none;
-    background-color: #007BFF;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.search-button:hover {
-    background-color: #0056b3;
-}
-
+/* Contenido principal */
 main {
     padding-top: 6%;
     display: flex;
@@ -105,69 +77,72 @@ main {
 }
 
 .calendar {
-    background-color: aqua;
+    background-color: rgba(255, 255, 255, 0.8);
     color: #0056b3;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    width: 120%;
+    width: 140%; /* Aumentar el ancho */
     margin-left: 3%;
     margin-bottom: 5%;
-    padding-bottom: 0.5%;
-    padding-left: 0.5%;
-    padding-right: 0.5%;
-    padding-top: 0.1%;
-    border-radius: 2%;
-    box-shadow: 10px 5px 5px #333;
+    padding: 2%; /* Más espacio interno */
+    border-radius: 8px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.09);
+    font-size: 1.2rem; /* Aumentar tamaño de letra */
+}
+.calendar h4, .calendar h3 {
+    font-size: 1.5rem; /* Títulos más grandes */
+    text-align: center; /* Centrar títulos */
+    margin-bottom: 10px; /* Separación inferior */
 }
 
 .calendar ol {
     background-color: azure;
-    color:#333;
-    padding: 10%;
+    color: #333;
+    padding: 0;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     list-style: none;
-    padding: 0;
-  }
-  
-.first-day {
-    grid-column-start: 5
+    font-size: 1.1rem; /* Aumentar tamaño de letra en la lista */
+    gap: 5px; /* Espaciado entre los elementos */
 }
-  
-#analisis{
+
+.first-day {
+    grid-column-start: 5;
+}
+#analisis {
     margin-top: -5%;
     width: 40%;
-    color: azure;
+    color: #333;
 }    
 
-#analisis h1{
+#analisis h1 {
     background-color: cadetblue;
     text-align: center;
 }
 
-#graficos{
-    width: 100%;
-    height: 100%;
+#graficos {
+    width: 100%;    
+    height: 80%;
     border-style: solid;
     border-width: 6px;
-    border-radius: 5px;
+    border-radius: 8px;
     border-color: aliceblue;
-    box-shadow: 10px 5px 5px #333;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.09);
 }
 
-#DesPDF{
+#DesPDF {
     background-color: tomato;
     color: aliceblue;
 }
-#DesXLS{
+
+#DesXLS {
     background-color: forestgreen;
     color: ghostwhite;
 }
 
 #DesXLS, #DesPDF {
-    padding: 2%;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    border-radius: 3px;
-    margin: 3px;
-    margin-top: 5px;
-    box-shadow: 10px 5px 5px #333;
+    padding: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-radius: 5px;
+    margin: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
 }
