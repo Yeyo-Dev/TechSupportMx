@@ -1,25 +1,4 @@
-<!--
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="estilopag.css">
-  <title>Formulario Registro</title>
-</head>
-<body>
-  <section class="form-register">
-    <h4>Registro de incidencias</h4>
-    <input class="controls" type="text" name="nombres" id="nombres" placeholder="Ingrese su Nombre">
-    <input class="controls" type="text" name="apellidos" id="apellidos" placeholder="Ingrese su Apellido">
-    <input class="controls" type="email" name="correo" id="correo" placeholder="Ingrese su Correo">
-    <input class="controls" type="password" name="correo" id="correo" placeholder="Ingrese su Contraseña">
-    <p>Estoy de acuerdo con <a href="#">Terminos y Condiciones</a></p>
-    <input class="botons" type="submit" value="Registrar">
-    <p><a href="#">¿Ya tengo Cuenta?</a></p>
-  </section>
--->
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -28,6 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="./style/estilopag.css">
   <title>Registro de Incidencias</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+
 </head>
 <body>
   <div class="hero">
@@ -113,7 +94,69 @@
     </div>
 
     <!-- Botón de Registrar Incidencia -->
-    <input class="botons" type="submit" value="Registrar Incidencia">
+    
+
+    <button class="botons" type="button" onclick="generarPDF()">registrar incidencias</button>
   </section>
+
+
+
+
+  <script>
+    async function generarPDF() {
+        // Obtener los valores del formulario
+        const usuario = document.getElementById("usuario").value;
+        const descripcion = document.getElementById("descripcion").value;
+        const tipoIncidencia = document.getElementById("tipoIncidencia").value;
+        const fechaCreacion = document.getElementById("fechaCreacion").value;
+        const tecnico = document.getElementById("tecnico").value;
+        const especialidadTecnico = document.getElementById("especialidadTecnico").value;
+        const idEquipo = document.getElementById("idEquipo").value;
+        const estadoActual = document.getElementById("estadoActual").value;
+        // Cargar el PDF existente desde la misma carpeta o servidor
+        const url = './frames/TechSupportMX.pdf'; // Archivo PDF en la misma carpeta
+        const pdfBytes = await fetch(url).then(res => res.arrayBuffer());
+        // Cargar el PDF en PDFLib
+        const pdfDoc = await PDFLib.PDFDocument.load(pdfBytes);
+        // Obtener la primera página del PDF
+        const page = pdfDoc.getPages()[0];  // Usamos la primera página
+        // Definir la fuente
+        const font = await pdfDoc.embedFont(PDFLib.StandardFonts.Helvetica);
+
+        // Escribir los datos en el PDF usando drawText
+        page.drawText(`Dia`, { x: 344, y: 600, size: 13, font: font });
+        page.drawText(`mes`, { x: 407, y: 600, size: 13, font: font });
+        page.drawText(`Año`, { x: 475, y: 600, size: 13, font: font });
+        
+        page.drawText(`Usuario7`, { x: 320, y: 564, size: 13, font: font });
+        page.drawText(`departamento`, { x: 320, y: 538, size: 13, font: font });
+        page.drawText(`Nombre del empleado`, { x: 320, y: 514, size: 13, font: font });
+        page.drawText(`Identificador del equipo`, { x: 320, y: 472, size: 13, font: font });
+        page.drawText(`Caracteristica`, { x: 320, y: 443, size: 13, font: font });
+        page.drawText(`Mantenimiento`, { x: 320, y: 411, size: 13, font: font });
+        page.drawText(`Descripcion`, { x: 100, y: 360, size: 13, font: font });
+        page.drawText(`Identificador`, { x: 320, y: 292, size: 13, font: font });
+        page.drawText(`Nombre Empleado`, { x: 320, y: 264, size: 13, font: font });
+        page.drawText(`ApellidoP`, { x: 320, y: 236, size: 13, font: font });
+        page.drawText(`ApellidoM`, { x: 320, y: 208, size: 13, font: font });
+        page.drawText(`Especialidad`, { x: 320, y: 178, size: 13, font: font });
+        
+
+        page.drawText(`NombreUsu`, { x: 270, y: 110, size: 8, font: font });
+        
+        page.drawText(`NombreTecni`, { x: 415, y: 110, size: 8, font: font });
+        
+
+        // Guardar el PDF modificado
+        const pdfBytesFinal = await pdfDoc.save();
+
+        // Crear un enlace de descarga para el PDF modificado
+        const blob = new Blob([pdfBytesFinal], { type: 'application/pdf' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'Formulario_Incidencia_Rellenado.pdf';
+        link.click();
+    }
+</script>
 </body>
-</html>
+</html>s
