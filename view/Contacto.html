@@ -5,36 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacto</title>
     <link rel="stylesheet" href="./style/Contacto.css">
+    <link rel="stylesheet" href="./style/About_us.css">
 </head>
 <body>
     <!-- Barra de navegación -->
-    <div class="navbar">
-        <div class="logo">
-            <img src="img/LogoTechSupportMX.png" alt="Logo">
-        </div>
-        <div class="menu">
-            <!-- Contenedor de búsqueda -->
-    <div class="search-container">
-    <input type="text" placeholder="Search report...">
-    <button class="search-btn">Search</button>
-    </div>
-            <a href="./index.html">Inicio</a>
-            <a href="./Contacto.html">Contacto</a>
-            <div class="dropdown">
-                <a href="#">Servicios</a>
-                <div class="dropdown-content">
-                    <a href="Mantenimiento_Preventivo.html">Mantenimiento preventivo</a>
-                    <a href="Mantenimiento_Correctivo.html">Mantenimiento correctivo</a>
-                    <a href="Mantenimiento_Evolutivo.html">Mantenimiento evolutivo</a>
-                    <a href="MantenimientoSeguridad.html">Mantenimiento de seguridad</a>
-                </div>
-            </div>
-            <div class="user-profile">
-                <img src="https://via.placeholder.com/30" alt="User Avatar">
-                <a href="Login.html">Username</a>
-            </div>
-        </div>
-    </div>
+    <nav>       
+        <input type="text" class="search-box" placeholder="Buscar..." />
+        <button class="search-button">Buscar</button>
+        <a href="./index.html">Inicio</a>
+        <a href="./Contacto.html">Contacto</a>
+        <select name="pais" id="pais">
+            <option value="Matenimiento_preventivo">Mantenimiento preventivo</option>
+            <option value="Matenimiento_colombia">Mantenimiento correctivo</option>
+            <option value="Matenimiento_argentina">Mantenimiento evolutivo</option>
+            <option value="Matenimiento_seguridad">Mantenimiento seguridad</option>
+        </select>
+        <a href="Login.html">Username</a>  
+    </nav>
 
     <!-- Contenido principal -->
     <div class="main-content">

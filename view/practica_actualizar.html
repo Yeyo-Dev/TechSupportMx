@@ -3,115 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/About_us.css">
+    <link rel="stylesheet" href="./style/general.css">
     <title>Busqueda</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
-    <style>
-        body {
-            background-color: #e3f2fd;
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        h1 {
-            text-align: center;
-            color: #4a90e2;
-            font-size: 2.5rem;
-            margin-top: 20px;
-        }
-
-        #busqueda {
-            border-radius: 10px;
-            width: 50%;
-            margin: 0 auto;
-            background-color: #d0e9f7; /* Azul suave */
-            padding: 20px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
-            border: 2px solid #000; /* Borde negro */
-            margin-top: 30px;
-        }
-
-        label {
-            font-size: 1rem;
-            color: #555;
-            margin-bottom: 8px;
-            display: block;
-        }
-
-        input {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            border: 1px solid #ddd;
-            font-size: 1rem;
-            box-sizing: border-box;
-            background-color: #f9f9f9;
-        }
-
-        input:focus {
-            outline: none;
-            border-color: #4a90e2;
-            background-color: #fff;
-        }
-
-        button {
-            background-color: #4a90e2;
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 8px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            margin: 10px 0;
-        }
-
-        button:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
-        }
-
-        button:hover:not(:disabled) {
-            background-color: #357ab7;
-        }
-
-        hr.fuera {
-            border: none;
-            border-top: 2px solid #ddd;
-            margin: 20px 0;
-        }
-
-        a {
-            text-decoration: none;
-        }
-
-        /* Diseño del botón de regresar */
-        .regresar-btn {
-            background-color: #efefef;
-            color: #333;
-            font-size: 1.1rem;
-            padding: 12px 20px;
-            border-radius: 8px;
-            border: 1px solid #ddd;
-            display: inline-block;
-            text-align: center;
-            transition: background-color 0.3s;
-        }
-
-        .regresar-btn:hover {
-            background-color: #ddd;
-        }
-
-        /* Contenedor para los botones */
-        .botones-container {
-            display: flex;
-            justify-content: center;
-            gap: 20px; /* Espacio entre los botones */
-        }
-    </style>
+    
 </head>
 <body>
+    <nav>       
+        <input type="text" class="search-box" placeholder="Buscar..." />
+        <button class="search-button">Buscar</button>
+        <a href="./index.html">Inicio</a>
+        <a href="./Contacto.html">Contacto</a>
+        <select name="pais" id="pais">
+            <option value="Matenimiento_preventivo">Mantenimiento preventivo</option>
+            <option value="Matenimiento_colombia">Mantenimiento correctivo</option>
+            <option value="Matenimiento_argentina">Mantenimiento evolutivo</option>
+            <option value="Matenimiento_seguridad">Mantenimiento seguridad</option>
+        </select>
+        <a href="Login.html">Username</a>  
+      </nav>
     <h1>Modificar empleado</h1>
     <hr class="fuera">
     <form id="busqueda">
