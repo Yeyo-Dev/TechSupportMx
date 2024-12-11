@@ -76,7 +76,7 @@
 
             try {
                 // Envía los datos al backend usando fetch
-                const response = await fetch('http://localhost:3000/api/registrar', {
+                const response = await fetch('./api/registrar', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data)
