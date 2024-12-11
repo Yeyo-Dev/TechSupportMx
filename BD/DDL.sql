@@ -141,6 +141,7 @@ INSERT INTO Departamento (nombre_departamento, descripcion) VALUES ('Recursos Hu
 INSERT INTO Tipo_Usuario (nombre_tipo) VALUES ('Administrador'), ('Usuario');
 INSERT INTO Empleado (nombre, apellido_p, apellido_m, id_departamento) VALUES ('Juan', 'Pérez', 'López', 1);
 INSERT INTO Usuario (id_empleado, id_tipo_usuario, nickname, password) VALUES (1, 1, 'admin', '12345');
+INSERT INTO Usuario (id_empleado, id_tipo_usuario, nickname, password) VALUES (null, 1, 'root', ' ');
 INSERT INTO Equipo (caracteristica, fecha_ult_mantenimiento, id_departamento) VALUES ('Computadora', '2024-11-01', 1);
 INSERT INTO Tipo_Incidencia (nombre_tipo, descripcion) VALUES ('Falla Técnica', 'Problemas técnicos en el equipo');
 INSERT INTO Ticket (id_usuario, id_equipo, id_tipo_incidencia, descripcion) VALUES (1, 1, 1, 'No enciende la computadora');

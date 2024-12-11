@@ -99,7 +99,7 @@
 
   <script>
     document.getElementById('consultarBtn').addEventListener('click', async () => {
-      const apiPath = "http://localhost:3000" + document.getElementById('apiSelect').value;
+      const apiPath = "." + document.getElementById('apiSelect').value;
       if (apiPath) {
         try {
           const response = await fetch(apiPath);

@@ -58,7 +58,7 @@
             const data = { b: document.getElementById('busq').value};
             console.log(data);
             if (document.getElementById('busq').value != '') {
-                fetch('http://localhost:3000/api/tabla_empleados', {
+                fetch('./api/tabla_empleados', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -116,7 +116,7 @@
                 id_departamento: document.getElementById('id_departamento').value
             };
 
-            fetch('http://localhost:3000/api/actualiza_empleados', {
+            fetch('./api/actualiza_empleados', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

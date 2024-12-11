@@ -7,10 +7,9 @@
     <link rel="stylesheet" href="./style/About_us.css">
     <link rel="stylesheet" href="./style/general.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
-    
 </head>
 <body>
-    <nav>       
+    <nav>
         <input type="text" class="search-box" placeholder="Buscar..." />
         <button class="search-button">Buscar</button>
         <a href="./index.html">Inicio</a>
@@ -21,11 +20,11 @@
             <option value="Matenimiento_argentina">Mantenimiento evolutivo</option>
             <option value="Matenimiento_seguridad">Mantenimiento seguridad</option>
         </select>
-        <a href="Login.html">Username</a>  
-      </nav>
+        <a href="Login.html">Username</a>
+    </nav>
     <h1>Buscar empleado</h1>
     <form id="busqueda">
-        <input type="search" name="busq" id="busq" placeholder="Introduce el ID del empleado">
+        <input type="search" id="busq" placeholder="Introduce el ID del empleado">
     </form>
 
     <div class="botones-container">
@@ -36,13 +35,16 @@
     </div>
 
     <script>
+        // Variable global para almacenar los datos del empleado
+        let empleadoData = null;
+
+        // Evento para capturar la búsqueda del empleado
         document.getElementById("busq").addEventListener("keyup", (e) => {
             e.preventDefault();
-            // Recoge los datos del formulario
             const data = { b: document.getElementById('busq').value };
-            console.log(data);
-            if (document.getElementById('busq').value != '') {
-                fetch('http://localhost:3000/api/tabla_empleados', {
+
+            if (data.b !== '') {
+                fetch('./api/buscar_empleado', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -57,54 +59,68 @@
                 })
                 .then(data => {
                     if (data[0]) {
-                        generarPDF(data[0]);
+                        empleadoData = data[0]; // Guarda los datos del empleado
+                        document.getElementById('down').disabled = false; // Habilita el botón de descarga
+                    } else {
+                        empleadoData = null; // Limpia los datos si no se encuentra el empleado
+                        document.getElementById('down').disabled = true; // Deshabilita el botón
                     }
-                    document.getElementById('down').disabled = false;
                 })
                 .catch(error => {
                     console.error('Error:', error);
                 });
             } else {
+                empleadoData = null;
                 document.getElementById('down').disabled = true;
             }
         });
 
+        // Evento para descargar el PDF al hacer clic en el botón
+        document.getElementById('down').addEventListener('click', async () => {
+            if (empleadoData) {
+                await generarPDF(empleadoData);
+            } else {
+                alert('No hay datos del empleado para generar el PDF.');
+            }
+        });
+
+        // Función para generar el PDF
         async function generarPDF(data) {
-            const id_empleado = data.id_empleado;
-            const nombre = data.nombre;
-            const apellido_p = data.apellido_p;
-            const apellido_m = data.apellido_m;
-            const id_departamento = data.id_departamento;
+            
+            const { id_empleado, nombre, apellido_p, apellido_m, id_departamento, nickname, password, id_usuario,id_tipo_usuario} = data;
 
-            const pdfDoc = await PDFLib.PDFDocument.create();
-            const page = pdfDoc.addPage([500, 700]);
+            const url = './frames/Empleado_TechSupportMX.pdf'; // Ruta del archivo PDF
+            const pdfBytes = await fetch(url).then(res => res.arrayBuffer()); // Cargar el PDF en formato binario
 
-            const blueColor = PDFLib.rgb(0, 0, 0);
-            const boldFont = await pdfDoc.embedFont(PDFLib.StandardFonts.HelveticaBold);
+            // Cargar el PDF en PDFLib
+            const pdfDoc = await PDFLib.PDFDocument.load(pdfBytes);
+            const page = pdfDoc.getPages()[0]; // Usamos la primera página del PDF
 
-            page.drawRectangle({ x: 0, y: 650, width: 500, height: 1, color: blueColor });
-            page.drawText('Datos del empleado', { x: 180, y: 670, size: 12, font: boldFont });
+            // Definir la fuente
+            const font = await pdfDoc.embedFont(PDFLib.StandardFonts.Helvetica);
 
-            let x = 40;
-            let y = 660;    
+            // Añadir los datos al PDF
+            page.drawText(`${id_empleado}`, { x: 430.5, y: 493, size: 13, font: font, color: PDFLib.rgb(1, 0, 0)  });
+            page.drawText(`${nombre}`, { x: 240.5, y: 435, size: 13, font: font });
+            page.drawText(`${apellido_p}`, { x: 340.5, y: 435, size: 13, font: font });
+            page.drawText(`${apellido_m}`, { x: 440.5, y: 435, size: 13, font: font });
+            page.drawText(`${id_departamento}`, { x: 420.5, y: 407, size: 13, font: font });
 
-            y -= 40;
-            page.drawText(`ID: ${id_empleado}`, { x, y, size: 12 });
-            y -= 20;
-            page.drawText(`nombre: ${nombre} ${apellido_p} ${apellido_m}`, { x, y, size: 12 });
-            y -= 20;
-            page.drawText(`Id del departamento: ${id_departamento}`, { x, y, size: 12 });
+            page.drawText(`${nickname}`, { x: 370.5, y: 294, size: 13, font: font });
+            page.drawText(`${password}`, { x: 370.5, y: 262, size: 13, font: font });
+            page.drawText(`${id_usuario}`, { x: 400.5, y: 228, size: 13, font: font });
+            page.drawText(`${id_tipo_usuario}`, { x:410.5, y: 198, size: 13, font: font });
 
-            const pdfBytes = await pdfDoc.save();
-            const blob = new Blob([pdfBytes], { type: "application/pdf" });
-            const link = document.createElement("a");
 
+            // Guardar el PDF modificado
+            const pdfBytesFinal = await pdfDoc.save();
+
+            // Crear un enlace de descarga para el PDF generado
+            const blob = new Blob([pdfBytesFinal], { type: 'application/pdf' });
+            const link = document.createElement('a');
             link.href = URL.createObjectURL(blob);
-            link.download = `ReporteEmpleado_${id_empleado}.pdf`;
-
-            document.getElementById('down').onclick = function() {
-                link.click();
-            };
+            link.download = `Empleado_${nickname}.pdf`; // Nombre del archivo generado
+            link.click(); // Realiza la descarga
         }
     </script>
 </body>

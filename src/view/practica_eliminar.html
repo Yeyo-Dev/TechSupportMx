@@ -41,7 +41,7 @@
             const data = { b: document.getElementById('busq').value };
             console.log(data);
             if (document.getElementById('busq').value != '') {
-                fetch('http://localhost:3000/api/tabla_empleados', {
+                fetch('./api/tabla_empleados', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -75,7 +75,7 @@
 
         async function eliminar(id) {
             const data = { b: id };
-            fetch('http://localhost:3000/api/eliminar_empleados', {
+            fetch('./api/eliminar_empleados', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

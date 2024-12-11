@@ -2,7 +2,7 @@
 async function checkSession() {
     try {
       // Realizar la solicitud al backend
-      const response = await fetch('http://localhost:3000/api/check-session', {
+      const response = await fetch('./api/check-session', {
         method: 'GET',
         credentials: 'same-origin', // Incluir las cookies de la sesión si están disponibles
       });

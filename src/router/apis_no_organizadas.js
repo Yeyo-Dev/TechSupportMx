@@ -302,7 +302,6 @@ router.get('/api/reporte_mantenimiento/:id_equipo', async (req, res) => {
         M.fecha_mantenimiento DESC
       LIMIT 1; -- Get the most recent maintenance
     `;
-    // SELECT * FROM nombre_vista
     // Execute the query
     const resultado = await pool.query(query);
 
