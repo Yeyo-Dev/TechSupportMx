@@ -1,0 +1,6 @@
+node_modules
+BD
+npm-debug.log
+.env
+.vscode
+.gitignore

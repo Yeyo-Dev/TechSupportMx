@@ -36,7 +36,16 @@ router.post('/api/registrar', async (req, res) => {
   try {
     // Consulta a la base de datos para verificar el usuario
     const resultado = await pool.query(
-      `CALL registrar_empleado_usuario('${nombre}', '${apellido_p}', '${apellido_m}', '${email}', ${id_departamento}, ${id_tipo_usuario},'${nickname}','${password}');`
+      `CALL registrar_empleado_usuario(
+      '${nombre}', 
+      '${apellido_p}', 
+      '${apellido_m}', 
+      '${email}', 
+      ${id_departamento}, 
+      ${id_tipo_usuario},
+      '${nickname}'
+      ,'${password}'
+      );`
     );
 
     res.status(200).json({ message: 'Registro exitoso', detalles: resultado.rows });

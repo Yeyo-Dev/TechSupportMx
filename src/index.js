@@ -5,10 +5,13 @@ import router from './router/routes.js'; // Importar las rutas desde el archivo
 import authRouter from './auth/login.js'; // Importar el router de login
 import authRegister from './auth/register.js';
 import authSession from './auth/sesion.js';
+import dotenv from "dotenv";
 
+// Carga las variables de entorno desde el archivo .env
+dotenv.config();
 const app = express();
 
-app.use(express.static('view'));
+app.use(express.static('src/view'));
 app.use(express.json()); // Para analizar cuerpos de solicitud en JSON
 app.use(express.urlencoded({ extended: true }));
 

@@ -1,0 +1,28 @@
+version: '3.9'
+services:
+  app:
+    build:
+      context: .               # Construye desde el directorio actual
+      dockerfile: Dockerfile   # Usa el Dockerfile para la app
+    ports:
+      - "3000:3000"            # Expone el puerto 3000 (puerto de tu app)
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/techsupport
+    depends_on:
+      - db                     # Asegúrate de que la base de datos esté lista
+
+  db:
+    image: postgres:16         # Imagen oficial de PostgreSQL
+    container_name: postgres_db
+    restart: always            # Reinicia el contenedor automáticamente si falla
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: techsupport
+    volumes:
+      - postgres_data:/var/lib/postgresql/data # Persiste los datos
+      - ./BD/DDL.sql:/docker-entrypoint-initdb.d/DDL.sql # Ejecuta el script al iniciar
+
+volumes:
+  postgres_data:
+

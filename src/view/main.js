@@ -61,6 +61,7 @@ document.getElementById('form_altas').addEventListener('submit', (event) => {
     })
     .then(data => {
       console.log(data);
+      alert("Usuario guardado correctamente");
     })
     .catch(error => {
       console.error('Error:', error);

@@ -4,6 +4,23 @@ import express from 'express';
 const router = express.Router();
 
 
+router.get('/api/empleados_departamentos2/:departamento', async (req, res) => {
+  const {departamento} = req.params
+
+  try {
+    const resultado = await pool.query(`
+      SELECT Empleado.id_empleado, Empleado.nombre||' '|| Empleado.apellido_p ||' '|| Empleado.apellido_m as nombre, Departamento.nombre_departamento
+      FROM Empleado
+      JOIN Departamento ON Empleado.id_departamento = Departamento.id_departamento
+      WHERE Departamento.nombre_departamento LIKE '%${departamento}%'
+    `);
+    res.json(resultado.rows);
+  } catch (error) {
+    console.error('Error al obtener empleados y departamentos:', error);
+    res.status(500).send('Error al obtener empleados y departamentos');
+  }
+});
+
 // Ruta para obtener todos los elementos
 router.get('/api/tabla_usuarios', async (req, res) => {
     try {
@@ -285,7 +302,7 @@ router.get('/api/reporte_mantenimiento/:id_equipo', async (req, res) => {
         M.fecha_mantenimiento DESC
       LIMIT 1; -- Get the most recent maintenance
     `;
-
+    // SELECT * FROM nombre_vista
     // Execute the query
     const resultado = await pool.query(query);
 
@@ -302,5 +319,6 @@ router.get('/api/reporte_mantenimiento/:id_equipo', async (req, res) => {
     res.status(500).send('Error retrieving maintenance report data');
   }
 });
+
 
 export default router;
