@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Usuario</title>
@@ -39,9 +38,9 @@
             <div class="Username">
                 <select name="id_departamento" required>
                     <option value="" disabled selected>Selecciona el Departamento</option>
-                    <option value="101">Recursos Humanos</option>
-                    <option value="102">Tecnología</option>
-                    <option value="103">Ventas</option>
+                    <option value="1">Soporte Técnico</option>
+                    <option value="2">Desarrollo</option>
+                    <option value="3">Administración</option>
                 </select>
                 <label>Departamento</label>
             </div>
@@ -62,8 +61,6 @@
                 <label>Contraseña</label>
             </div>
             <input type="submit" value="Crear cuenta">
-            <br><br>
-            <bUtton onclick="generarPDF()">Este Botton Desaparecera Cuando Solucione El Registrar</bUtton>
         </form>
     </div>
 
@@ -79,7 +76,7 @@
 
             try {
                 // Envía los datos al backend usando fetch
-                const response = await fetch('./api/registrar', {
+                const response = await fetch('http://localhost:3000/api/registrar', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data)
@@ -92,47 +89,11 @@
                     const errorResponse = await response.json();
                     alert(`Error al registrar: ${errorResponse.message || 'Inténtalo de nuevo.'}`);
                 }
-
-                generarPDF();
             } catch (error) {
                 console.error('Error:', error);
                 alert('Error al conectarse al servidor. Inténtalo más tarde.');
             }
         });
-
-        async function generarPDF() {
-        // Obtener los valores del formulario
-        // Cargar el PDF existente desde la misma carpeta o servidor
-        const nombre = document.querySelector('input[name="nombre"]').value;
-        const apellido_p = document.querySelector('input[name="apellido_p"]').value;
-        const apellido_m = document.querySelector('input[name="apellido_m"]').value;
-
-        const nickname = document.querySelector('input[name="nickname"]').value;
-
-        const url = './frames/Bienvenida_TechSupportMX.pdf'; // Archivo PDF en la misma carpeta
-        const pdfBytes = await fetch(url).then(res => res.arrayBuffer());
-        // Cargar el PDF en PDFLib
-        const pdfDoc = await PDFLib.PDFDocument.load(pdfBytes);
-        // Obtener la primera página del PDF
-        const page = pdfDoc.getPages()[0];  // Usamos la primera página
-        // Definir la fuente
-        const font = await pdfDoc.embedFont(PDFLib.StandardFonts.Helvetica);
-
-        page.drawText(`Nombre del empleado: ${nombre} ${apellido_p} ${apellido_m}`, { x: 84.5, y: 606, size: 13, font: font });
- 
-
-        // Guardar el PDF modificado
-        const pdfBytesFinal = await pdfDoc.save();
-
-        // Crear un enlace de descarga para el PDF modificado
-        const blob = new Blob([pdfBytesFinal], { type: 'application/pdf' });
-        const link = document.createElement('a');
-        link.href = URL.createObjectURL(blob);
-        link.download = `Bienvenido_${nickname}.pdf`;
-        link.click();
-    }
-
-
     </script>
 </body>
 </html>
