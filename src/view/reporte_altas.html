@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -75,5 +77,24 @@
         <button id="DesXLS">Descargar Excel</button>
       </div>
     </main>  
+    <script>
+      // Capturamos el botón
+      document.getElementById('DesPDF').addEventListener('click', function () {
+          // Seleccionamos el contenido que queremos convertir en PDF
+          const elemento = document.getElementById('analisis');
+          
+          // Configuración del PDF
+          const opciones = {
+              margin: 1,
+              filename: 'reporte.pdf',
+              image: { type: 'jpeg', quality: 0.98 },
+              html2canvas: { scale: 2 },
+              jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+          };
+          
+          // Generamos y descargamos el PDF
+          html2pdf().set(opciones).from(elemento).save();
+      });
+      </script>
 </body>
 </html>
