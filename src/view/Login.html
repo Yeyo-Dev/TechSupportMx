@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="style/LoginCSS.css"> <!-- Ruta corregida -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="./js/sesion.js"></script>
     <style>
         .Formulario input{
@@ -62,15 +63,41 @@
 
                 if (response.ok) {
                     // Login exitoso, redirigir o mostrar mensaje
-                    alert('Inicio de sesión exitoso');
+                    //alert('Inicio de sesión exitoso');
+                    //Swal.fire({ title: "Sesión iniciada", text: "Ha iniciado sesión exitosamente",icon: "success"});
+                    const Toast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 1200,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.onmouseenter = Swal.stopTimer;
+                        toast.onmouseleave = Swal.resumeTimer;
+                    }
+                    });
+                    await Toast.fire({
+                    icon: "success",
+                    title: "Ha iniciado sesión exitosamente"
+                    });
                     window.location.href = '/index.html'; // Redirigir a la página principal
                 } else {
                     // Mostrar mensaje de error
-                    alert(result.message || 'Error al iniciar sesión');
+                    //alert(result.message || 'Error al iniciar sesión');
+                    Swal.fire({
+                    title: "Credenciales invalidas",
+                    text: "Error al iniciar sesión",
+                    icon: "error"
+                    });
                 }
             } catch (error) {
                 console.error('Error en la solicitud:', error);
-                alert('Ocurrió un error al intentar iniciar sesión. Inténtalo de nuevo.');
+                Swal.fire({
+                    title: "Ocurrió un error al intentar iniciar sesión",
+                    text: "Inténtalo de nuevo",
+                    icon: "error"
+                    });
+                //alert('Ocurrió un error al intentar iniciar sesión. Inténtalo de nuevo.');
             }
         });
     </script>

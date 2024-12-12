@@ -25,7 +25,7 @@ body {
 }
 
 .Formulario {
-    position: relative;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -126,4 +126,44 @@ input[type="submit"]:hover {
 
 .Registrarse a:hover {
     text-decoration: underline;
+}
+
+/* Media Queries para diseño responsivo */
+@media (max-width: 768px) {
+    .Formulario {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .Formulario h1 {
+        font-size: 24px;
+    }
+
+    .Formulario h3 {
+        font-size: 16px;
+    }
+
+    input[type="submit"] {
+        font-size: 16px;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .Formulario {
+        padding: 10px;
+    }
+
+    .Formulario h1 {
+        font-size: 20px;
+    }
+
+    .Formulario h3 {
+        font-size: 14px;
+    }
+
+    input[type="submit"] {
+        font-size: 14px;
+        padding: 8px;
+    }
 }
