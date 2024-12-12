@@ -1,32 +1,31 @@
+/* Estilo general */
 body {
     margin: 0;
-    background-color: #e3f2fd; /* Fondo igual al de la primera página */
-    font-family: Arial, sans-serif; /* Tipografía simple y limpia */
+    background-color: #e3f2fd;
+    font-family: Arial, sans-serif;
 }
 
 header {
-    background-color: #4a90e2; /* Azul suave para la barra superior */
+    background-color: #4a90e2;
     color: white;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding: 10px; /* Barra más delgada */
-    margin: 0;
+    padding: 10px;
     width: 100%;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .menu {
     display: flex;
     align-items: center;
-    gap: 10px; /* Espacio entre elementos */
+    gap: 10px;
 }
 
 .opc {
     background-color: #4a90e2;
     color: white;
-    padding: 10px; /* Reducción del tamaño */
-    width: auto;
+    padding: 10px;
     text-align: center;
     border-radius: 5px;
     cursor: pointer;
@@ -34,7 +33,7 @@ header {
 }
 
 .opc:hover {
-    background-color: #357abd; /* Azul más oscuro al pasar el mouse */
+    background-color: #357abd;
 }
 
 .menu input {
@@ -42,7 +41,7 @@ header {
     width: 300px;
     font-family: 'Courier New', Courier, monospace;
     background-color: white;
-    color: #4a90e2; /* Texto azul */
+    color: #4a90e2;
     border: 1px solid #4a90e2;
     border-radius: 5px;
     padding: 5px;
@@ -59,13 +58,13 @@ header {
 }
 
 .menu button:hover {
-    background-color: #285687; /* Azul más oscuro al pasar el mouse */
+    background-color: #285687;
 }
 
 #usuario {
     border-radius: 50%;
     background-color: white;
-    width: 50px; /* Tamaño reducido */
+    width: 50px;
     height: 50px;
     display: flex;
     align-items: center;
@@ -79,19 +78,81 @@ header {
 }
 
 #reloj-frame {
-    border-radius: 0; /* Elimina el borde redondeado */
     margin: 60px auto;
     display: block;
-    box-shadow: none; /* Elimina la sombra */
-    border: none; /* Elimina cualquier borde que pueda estar presente */
+    border: none;
 }
 
 footer {
-    background-color: #357abd; /* Azul que combina con la barra superior */
+    background-color: #357abd;
     color: white;
     text-align: center;
     padding: 15px;
     position: fixed;
     bottom: 0;
     width: 100%;
+}
+
+/* Media Queries para diseño responsivo */
+@media (max-width: 1024px) {
+    header {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .menu {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .menu input {
+        width: 80%;
+    }
+}
+
+@media (max-width: 768px) {
+    .menu input {
+        width: 100%;
+        font-size: 0.9rem;
+    }
+
+    .menu button {
+        font-size: 0.9rem;
+        padding: 10px 20px;
+    }
+
+    #usuario {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 10px;
+    }
+
+    .menu input {
+        font-size: 0.8rem;
+    }
+
+    .opc {
+        font-size: 0.8rem;
+        padding: 8px;
+    }
+
+    .menu button {
+        font-size: 0.8rem;
+        padding: 8px 15px;
+    }
+
+    #usuario {
+        width: 35px;
+        height: 35px;
+    }
+
+    footer {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
 }

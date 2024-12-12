@@ -167,3 +167,94 @@ a {
     justify-content: center;
     gap: 20px; /* Espacio entre los botones */
 }
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    h1 {
+        font-size: 2rem; /* Reducir tamaño de fuente en pantallas más pequeñas */
+    }
+
+    #busqueda {
+        width: 80%; /* Hacer el formulario más estrecho en pantallas medianas */
+        margin-top: 20px;
+    }
+
+    .botones-container {
+        flex-direction: column; /* Los botones se apilan verticalmente en pantallas medianas */
+        gap: 10px;
+    }
+
+    table {
+        width: 90%; /* Hacer la tabla más estrecha en pantallas medianas */
+    }
+
+    table th,
+    table td {
+        padding: 8px; /* Reducir el tamaño de los padding en las celdas */
+    }
+
+    button {
+        font-size: 1rem; /* Reducir tamaño de los botones */
+        padding: 10px 20px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    /* Ajustar título */
+    h1 {
+        font-size: 1.5rem; /* Reducir aún más el tamaño del título */
+        margin-top: 15px; /* Reducir el margen superior */
+    }
+
+    /* Ajustar el formulario de búsqueda */
+    #busqueda {
+        width: 90%; /* Hacer el formulario ocupar más espacio en pantallas pequeñas */
+        padding: 15px; /* Reducir padding */
+    }
+
+    /* Ajustar campos de búsqueda */
+    input[type="search"] {
+        font-size: 1rem;
+        padding: 10px;
+    }
+
+    /* Ajustar tamaño de botones */
+    input[type="submit"],
+    button {
+        font-size: 1rem; /* Reducir tamaño de texto */
+        padding: 10px 15px; /* Reducir padding */
+    }
+
+    /* Asegurar que los botones de navegación estén alineados */
+    .botones-container {
+        flex-direction: column; /* Apilar los botones */
+        gap: 8px; /* Reducir espacio entre los botones */
+    }
+
+    /* Ajustar tablas */
+    table {
+        width: 100%; /* Hacer la tabla ocupar todo el ancho en pantallas pequeñas */
+        font-size: 0.9rem; /* Reducir tamaño de texto en las tablas */
+    }
+
+    table th,
+    table td {
+        padding: 6px; /* Reducir padding en las celdas */
+    }
+
+    /* Asegurar que el botón "Regresar" se ajuste */
+    .regresar-btn {
+        font-size: 1rem; /* Reducir tamaño de los botones */
+        padding: 10px 15px;
+    }
+
+    /* Estilo adicional para los enlaces */
+    a {
+        font-size: 1rem; /* Reducir tamaño de los enlaces */
+    }
+
+    /* Mejorar la visualización en pantallas pequeñas */
+    #salida {
+        font-size: 0.9rem; /* Reducir el tamaño de la fuente de la tabla */
+    }
+}

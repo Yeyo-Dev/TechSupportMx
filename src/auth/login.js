@@ -23,6 +23,7 @@ router.post('/api/login', async (req, res) => {
       res.cookie('session', {
         userId: resultado.rows[0].id_usuario,
         nickname: resultado.rows[0].nickname,
+        id_tipo_usuario: resultado.rows[0].id_tipo_usuario
       }, {
         httpOnly: true, // Protege la cookie del acceso del lado del cliente
         maxAge: 1000 * 60 * 60 * 24, // 1 día de duración

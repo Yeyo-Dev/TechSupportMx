@@ -28,7 +28,7 @@ body {
 
 /* Navegación */
 nav {
-    text-align: right;   
+    text-align: right;
     background-color: rgba(37, 179, 255, 0.8);
     color: white;
     padding: 10px;
@@ -56,17 +56,16 @@ nav select {
     font-size: 14px;
 }
 
-/* Imagen de logo */
 .Imagen {
-    display: flex;
-    justify-content: left;
-    padding: 5px;
-    position: absolute;
+    position: fixed; /* Mantener el logo fijo en la esquina superior izquierda */
+    top: 10px;       /* Separación desde el borde superior */
+    left: 10px;      /* Separación desde el borde izquierdo */
+    z-index: 10;     /* Asegurar que el logo esté sobre otros elementos */
 }
 
 #logo {
-    width: 25%;
-    height: auto;
+    width: 100px;    /* Ajustar el tamaño del logo */
+    height: auto;    /* Mantener las proporciones del logo */
 }
 
 /* Contenido principal */
@@ -74,24 +73,25 @@ main {
     padding-top: 6%;
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap; /* Habilitar ajuste de contenido */
 }
 
 .calendar {
     background-color: rgba(255, 255, 255, 0.8);
     color: #0056b3;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    width: 140%; /* Aumentar el ancho */
-    margin-left: 3%;
-    margin-bottom: 5%;
-    padding: 2%; /* Más espacio interno */
+    width: 100%;
+    max-width: 600px; /* Limitar el ancho */
+    margin: 20px auto; /* Centrar y ajustar márgenes */
+    padding: 2%;
     border-radius: 8px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.09);
-    font-size: 1.2rem; /* Aumentar tamaño de letra */
+    font-size: 1.2rem;
 }
 .calendar h4, .calendar h3 {
-    font-size: 1.5rem; /* Títulos más grandes */
-    text-align: center; /* Centrar títulos */
-    margin-bottom: 10px; /* Separación inferior */
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 10px;
 }
 
 .calendar ol {
@@ -101,18 +101,20 @@ main {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     list-style: none;
-    font-size: 1.1rem; /* Aumentar tamaño de letra en la lista */
-    gap: 5px; /* Espaciado entre los elementos */
+    font-size: 1.1rem;
+    gap: 5px;
 }
 
 .first-day {
     grid-column-start: 5;
 }
+
 #analisis {
-    margin-top: -5%;
-    width: 40%;
+    margin: 20px auto;
+    width: 100%;
+    max-width: 600px; /* Limitar ancho */
     color: #333;
-}    
+}
 
 #analisis h1 {
     background-color: cadetblue;
@@ -120,8 +122,9 @@ main {
 }
 
 #graficos {
-    width: 100%;    
-    height: 80%;
+    width: 100%;
+    max-width: 600px;
+    height: auto; /* Altura automática en pantallas pequeñas */
     border-style: solid;
     border-width: 6px;
     border-radius: 8px;
@@ -145,4 +148,65 @@ main {
     border-radius: 5px;
     margin: 5px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Media Queries para diseño responsivo */
+@media (max-width: 1024px) {
+    main {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .calendar, #analisis, #graficos {
+        width: 90%;
+        margin: 20px auto;
+    }
+}
+
+@media (max-width: 768px) {
+    nav a {
+        font-size: 12px;
+        padding: 10px;
+    }
+
+    #logo {
+        width: 30%;
+    }
+
+    .calendar, #analisis, #graficos {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    nav {
+        text-align: center;
+    }
+
+    nav a {
+        display: block;
+        margin: 5px 0;
+    }
+
+    #logo {
+        width: 40%;
+    }
+
+    .calendar h4, .calendar h3 {
+        font-size: 1.2rem;
+    }
+
+    .calendar ol {
+        font-size: 0.9rem;
+    }
+
+    #DesXLS, #DesPDF {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+
+    footer {
+        font-size: 0.8rem;
+        padding: 10px;
+    }
 }

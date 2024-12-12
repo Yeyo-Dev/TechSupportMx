@@ -11,9 +11,8 @@ body {
 }
 
 nav {
-    text-align: right;   
-    background-color: rgba(37, 179, 255, 0.8); /* Fondo semi-transparente */
-    background-color: #25b3ff;
+    text-align: right;
+    background-color: #25b3ff; /* Fondo semi-transparente */
     color: white;
     padding: 10px;
     width: 100%;
@@ -40,59 +39,30 @@ nav select {
     font-size: 14px;
 }
 
-.Imagen {
-    display: flex;
-    justify-content: left; /* Centra horizontalmente la imagen */
-    padding: 10px;
-}
-
 .Contenedor {
     max-width: 970px; /* Limita el ancho máximo */
     margin: 20px auto; /* Centra el contenedor y añade margen superior */
     padding: 10px;
-    position: absolute;
-    left: 20%;
-    top: 50%;
-    transform: translateY(-110%);
-    background: rgba(255, 255, 255, 0.8); /* Conservamos fondo semi-transparente */
+    position: relative;
+    background: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente */
     border-radius: 30px;
 }
 
-.Contenedor h2 {
-    text-align: center; /* Centra el título */
-}
-
-.Contenedor h1 {
-    text-align: center; /* Centra el título */
-}
-
-.Contenedor p {
-    font-size: 19px;
-    text-align: justify;
-}
-
-.Catalago h2 {
-    color: rgb(4, 4, 4);
+.Contenedor h1, .Contenedor p {
+    text-align: center; /* Centra el título y párrafo */
 }
 
 .Catalago {
     text-align: left; /* Centra el texto */
     position: relative;
     margin: 20px 0; /* Añade márgenes superior e inferior */
-    left: 5%;
-    width: 100px;
 }
 
 .Catalogo-seleccion {
     display: flex;
-    justify-content: space-around; /* Distribuye el espacio entre los servicios */
+    justify-content: space-evenly; /* Distribuye el espacio entre los servicios */
     flex-wrap: wrap; /* Permite que los elementos se muevan a la siguiente línea si no hay espacio */
     padding: 10px 0; /* Espacio superior e inferior */
-}
-
-.Catalogo-seleccion a {
-    color: black; /* Color de letra de los hipervínculos */
-    text-decoration: none; /* Le quita el subrayado a los hipervínculos */
 }
 
 .Catalogo-Servicio1,
@@ -126,7 +96,8 @@ nav select {
 }
 
 .search-box {
-    width: 400px;
+    width: 100%; /* Asegura que el campo de búsqueda se ajuste al contenedor */
+    max-width: 400px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -144,4 +115,41 @@ nav select {
 
 .search-button:hover {
     background-color: #0056b3;
+}
+
+/* Media Queries para diferentes tamaños de pantalla */
+@media screen and (max-width: 768px) {
+    nav {
+        text-align: left;
+        padding: 5px;
+    }
+
+    .Catalogo-seleccion {
+        flex-direction: column; /* Cambia la disposición a columna en pantallas pequeñas */
+        align-items: center;
+    }
+
+    .Catalogo-Servicio1,
+    .Catalogo-Servicio2,
+    .Catalogo-Servicio3,
+    .Catalogo-Servicio4 {
+        width: 100%; /* Servicios ocupan todo el ancho disponible */
+        max-width: 300px; /* Establece un máximo ancho */
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    nav a, nav select {
+        font-size: 12px; /* Reduce el tamaño de la fuente en pantallas muy pequeñas */
+    }
+
+    .Contenedor {
+        padding: 15px;
+        margin: 10px;
+    }
+
+    .search-box {
+        width: 80%;
+    }
 }

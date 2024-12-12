@@ -8,12 +8,15 @@ async function checkSession() {
       });
   
       const result = await response.json();
-  
+      
+      if(window.location.pathname.includes('index.html') && result.session.id_tipo_usuario == 1) {
+        console.log(result.session.id_tipo_usuario);
+        document.getElementById('usuario').insertAdjacentHTML('beforebegin', `<div class="opc" onclick="location.href = './Menu.html'">Administrar</div>`)
+      }
       // Si estamos en Login.html y la sesión está activa, redirigir a index.html
       if (window.location.pathname.includes('Login.html') && result.message === 'Sesión activa') {
         window.location.href = 'index.html'; // Redirigir a la página principal si ya está logueado
       }
-  
       // Si la sesión no está iniciada, redirigir a Login.html
       if (result.message === 'Sesión no iniciada' && !window.location.pathname.includes('Login.html')) {
         window.location.href = 'Login.html'; // Redirigir a login si la sesión no está iniciada

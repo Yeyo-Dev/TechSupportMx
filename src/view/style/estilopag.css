@@ -181,133 +181,137 @@ label {
 .form-register .botons:hover {
     background: #1976d2;
 }*/
+/* General */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-  
+
 body {
     background-color: #e3f2fd;
     font-family: Arial, sans-serif;
     background-image: url('fondo.jpg');
-    background-size:cover;
+    background-size: cover;
+    background-position: center;
 }
-  
+
+/* Formulario */
 .form-register {
-    width: 1150px; /* Hacemos más ancho el formulario */
-    background: rgba(255, 255, 255, 0.486); /* Añadimos transparencia */
+    width: 90%; /* Hacerlo flexible */
+    max-width: 1150px; /* Máximo ancho */
+    background: rgba(255, 255, 255, 0.9);
     padding: 40px;
     margin: auto;
     margin-top: 50px;
     border-radius: 8px;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.09); 
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
 }
-  
+
 .form-register h4 {
-    font-size: 45px; /* Aumentamos el tamaño del título */
+    font-size: 2rem; /* Ajustable */
     margin-bottom: 25px;
     text-align: center;
 }
-  
+
 .controls {
     width: 100%;
-    background: rgba(249, 249, 249, 0.558); /* Ajustamos un poco la transparencia */
+    background: rgba(249, 249, 249, 0.9);
     padding: 15px;
-    border-radius: 6px; 
-    margin-bottom: 25px;
+    border-radius: 6px;
+    margin-bottom: 20px;
     border: 1px solid #ccc;
-    font-size: 18px; 
+    font-size: 1rem;
     color: #333;
 }
-  
+
 textarea.controls {
     height: 100px;
     resize: none;
 }
-  
+
 label {
-    font-size: 16px; /* Aumentamos el tamaño de las etiquetas */
+    font-size: 1rem;
     margin-bottom: 8px;
     display: block;
-    color: #333333;
+    color: #333;
 }
-  
+
+/* Filas */
 .fila {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 30px; /* Más espacio entre las filas */
+    flex-wrap: wrap; /* Ajuste para pantallas pequeñas */
+    gap: 20px; /* Espacio entre elementos */
+    margin-bottom: 30px;
 }
 
 .campo {
-    width: 48%;
+    flex: 1 1 calc(50% - 20px); /* Dos columnas en pantallas medianas */
+    min-width: 150px;
 }
 
-/* Fila 2: Ajustamos para tener tres columnas en lugar de dos anchas */
+/* Ajustes para filas específicas */
 .fila:nth-child(2) .campo {
-    width: 32%; /* Ajustamos la proporción de los campos en la fila 2 */
+    flex: 1 1 calc(33.33% - 20px); /* Tres columnas */
 }
 
-/* Fila 3: Ajustamos para tener cuatro columnas más espaciadas */
 .fila:nth-child(3) .campo {
-    width: 24%;
-    margin-right: 10px; /* Añadimos un margen consistente a todos los recuadros */
+    flex: 1 1 calc(25% - 20px); /* Cuatro columnas */
 }
 
+/* Botón */
 .form-register .botons {
     width: 100%;
     background: #2196f3;
     border: none;
-    padding: 15px; /* Botón más grande */
+    padding: 15px;
     color: white;
-    font-size: 18px; /* Texto más grande */
+    font-size: 1rem;
     cursor: pointer;
     border-radius: 6px;
     margin-top: 15px;
 }
-  
+
 .form-register .botons:hover {
     background: #1976d2;
 }
+
+/* Hero */
 .hero {
     position: absolute;
     top: 0;
     left: 0;
-    width: 120%;
-    height: 127%;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
-    z-index: -1; /* Asegú    background-position: center; /* Centra la imagen */
-background-position: center;
-
+    z-index: -1;
 }
 
 .hero img {
-    position: absolute; /* Asegura que la imagen se ajuste a la hero */
+    position: absolute;
     top: 50%;
     left: 50%;
-    width: 150%; /* Aumenta el tamaño al 150% o más según necesites */
-    height: 150%; /* Igual que arriba */
-    transform: translate(-50%, -50%); /* Centra la imagen */
-    object-fit: cover; /* Mantiene la proporción */
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
 }
 
+/* Navbar */
 nav {
-    text-align: right;   
-    background-color: rgba(37, 179, 255, 0.8); /* Fondo semi-transparente */
-    background-color: #25b3ff;
+    text-align: right;
+    background-color: rgba(37, 179, 255, 0.8);
     color: white;
     padding: 10px;
-    width: 100%;
-    position: relative; /* Asegura que el nav esté sobre el fondo */
-    z-index: 1; /* Coloca el nav por encima del fondo */
+    position: relative;
+    z-index: 1;
 }
 
 nav a {
     color: white;
-    padding: 14px 20px;
+    padding: 10px 15px;
     text-decoration: none;
-    display: inline-block;
-    font-size: 14px;
+    font-size: 1rem;
 }
 
 nav a:hover {
@@ -317,20 +321,73 @@ nav a:hover {
 nav select {
     background: #333;
     color: white;
-    padding: 9px 20px;
-    font-size: 14px;
+    padding: 10px 15px;
+    font-size: 1rem;
 }
 
+
+
+/* Logo */
 .Imagen {
     display: flex;
-    justify-content: left; /* Centra horizontalmente la imagen */
+    justify-content: left; /* Centra la imagen horizontalmente como en tu código original */
     padding: 5px;
     position: absolute;
-   
-
+    top: 20px; /* Ajuste para separar el logo del título */
+    left: 20px; /* Ajuste para asegurar que el logo se mantenga a la izquierda */
 }
 
-#logo{
-    width: 25%;
-    height: auto;
+#logo {
+    width: 225px; /* Mantiene el tamaño original del logo */
+    height: 225px; /* Mantiene el tamaño original del logo */
+    max-width: 100%; /* Hace que la imagen no se desborde */
+    height: auto; /* Mantiene la proporción original de la imagen */
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+    .form-register {
+        width: 95%;
+    }
+
+    .fila:nth-child(2) .campo,
+    .fila:nth-child(3) .campo {
+        flex: 1 1 calc(50% - 20px); /* Dos columnas en pantallas medianas */
+    }
+
+    nav a {
+        font-size: 0.9rem;
+    }
+
+    #logo {
+        width: 60%; /* Hace que el logo ocupe el 60% del ancho de la pantalla */
+        max-width: 200px; /* Limita el tamaño máximo del logo */
+        height: auto; /* Mantiene la proporción */
+        margin-top: 30px; /* Asegura espacio superior en pantallas medianas */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .fila {
+        flex-direction: column; /* Una columna en pantallas pequeñas */
+    }
+
+    .fila .campo {
+        flex: 1 1 100%;
+    }
+
+    .form-register h4 {
+        font-size: 1.5rem;
+    }
+
+    nav a {
+        font-size: 0.8rem;
+    }
+
+    #logo {
+        width: 80%; /* Hace que el logo ocupe el 80% del ancho de la pantalla */
+        max-width: 150px; /* Limita el tamaño máximo del logo */
+        height: auto; /* Mantiene la proporción */
+        margin-top: 30px; /* Asegura espacio superior en pantallas pequeñas */
+    }
 }

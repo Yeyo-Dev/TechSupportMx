@@ -60,7 +60,7 @@ body {
 
 form .Username {
     position: relative;
-    /*border-bottom: 2px solid #adadad;*/
+    border-bottom: 2px solid #adadad;
     border-bottom: 2px solid #0b0b0b;
     margin: 30px 0;
 }

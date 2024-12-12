@@ -1,0 +1,67 @@
+nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: #25b3ff;
+  padding: 10px;
+  box-sizing: border-box;
+  width: 100%;
+  color: white;
+  flex-wrap: wrap; /* Permite que los elementos se ajusten a una nueva línea si es necesario */
+}
+
+nav a, nav select {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin: 0 10px;
+}
+
+nav a {
+  padding: 14px 20px;
+}
+
+nav a:hover {
+  background-color: #3485e2;
+}
+
+nav select {
+  background: #3485e2;
+  padding: 9px 20px;
+  border-radius: 4px;
+  width: 230px;
+}
+
+/* Media Query para pantallas de hasta 768px (tablets y móviles) */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column; /* Apila los elementos verticalmente */
+    align-items: flex-start; /* Alinea elementos a la izquierda */
+    padding: 10px 20px;
+  }
+
+  nav a, nav select {
+    margin: 5px 0; /* Reduce el margen para mejor espaciado vertical */
+    width: 100%;   /* Hace que los elementos ocupen todo el ancho disponible */
+    text-align: center; /* Centra el texto en los enlaces */
+  }
+
+  nav select {
+    width: 100%; /* El select ocupa todo el ancho en pantallas pequeñas */
+  }
+}
+
+/* Media Query para pantallas de hasta 480px (móviles pequeños) */
+@media (max-width: 480px) {
+  nav a {
+    font-size: 12px; /* Reduce el tamaño del texto para pantallas pequeñas */
+    padding: 10px 15px;
+  }
+
+  nav select {
+    padding: 8px 15px;
+  }
+}
